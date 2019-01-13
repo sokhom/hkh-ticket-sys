@@ -16,7 +16,7 @@ export default class TaskList extends PureComponent {
               {title:'Japanese princess to wed commoner.',type:'ticket'},
               {title:'Australian walks 100km after outback crash.',type:'ticket'},
               {title:'Man charged over missing wedding girl.',type:'ticket'},
-              {title:'Los Angeles battles huge wildfires.',type:'ticket'}
+              {title:'Los Angeles battles huge wildfires.',type:'ticket1'}
             ];
 
         return(
