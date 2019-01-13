@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { Panel } from 'react-bootstrap';
+import { Form, Tabs } from 'antd';
 
 import './Dashboard.scss';
 

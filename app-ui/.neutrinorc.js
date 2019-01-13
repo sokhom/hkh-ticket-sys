@@ -30,6 +30,7 @@ module.exports = {
     '@neutrinojs/karma',
     'neutrino-webpack.js',
     'neutrino-sass.js',
+    'neutrino-less.js',
     (neutrino) => neutrino.config.node.set('Buffer', true),
   ],
   options: {

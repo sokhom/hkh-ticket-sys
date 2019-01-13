@@ -20,7 +20,7 @@ export default ({ children }: Props) => (
   <div id="core-layout">
     <Switch>
       <Route path="/auth" component={UnauthenticatedContainer} />
-      <Route path="/admin" component={AuthenticatedContainer} />
+      <Route path="/admin1" component={AuthenticatedContainer} />
     </Switch>
     {children}
     <Alert

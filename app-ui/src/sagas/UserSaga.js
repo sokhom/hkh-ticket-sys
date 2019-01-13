@@ -133,7 +133,7 @@ export function* fetchUserPeriodicallyWorker(duration: number): Generator<*, *, 
  * Worker which handles the sign-out process.
  */
 export function* signOutUserWorker(api: UserAPI): Generator<*, *, *> {
-  while (yield take(signOutUser().type)) {
+      while (yield take(signOutUser().type)) {
     try {
       yield call([api, api.signOut]);
       yield put(resetUserState());

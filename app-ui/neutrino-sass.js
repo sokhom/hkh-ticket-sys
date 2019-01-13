@@ -14,6 +14,7 @@ module.exports = (neutrino) => {
   // set them as include paths.
   if (neutrino.config.resolve && neutrino.config.resolve.modules) {
     sassOptions.includePaths = neutrino.config.resolve.modules.values();
+    //console.log('sassOptions:',sassOptions);
   }
 
   neutrino.config.module.rule('scss').test(/\.scss$/)

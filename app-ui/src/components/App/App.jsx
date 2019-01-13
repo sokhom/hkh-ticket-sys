@@ -41,7 +41,6 @@ export default class App extends React.Component<Props> {
    */
   render() {
     const { store } = this.props;
-
     return (
       <Provider store={store}>
         <I18nLoaderContainer>
@@ -50,8 +49,8 @@ export default class App extends React.Component<Props> {
               <Router history={history}>
                 <CaptureNotFoundRoute>
                   <Switch>
-                    <Redirect exact from="/" to="/admin" />
-                    <Route path="/admin" component={secured(Bundles.admin(store))} />
+                    <Redirect exact from="/" to="/list" />
+                    <Route path="/list" component={secured(Bundles.admin1(store))} />
                     <Route path="/auth" component={unsecured(Bundles.auth(store))} />
                     <NotFoundRoute />
                   </Switch>

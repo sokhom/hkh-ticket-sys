@@ -6,6 +6,10 @@
           "exclude": [
             "**/*.spec.js"
           ]
+        }],
+        ["import", {
+            "libraryName": "antd",
+            "style": "true"
         }]
       ]
     },

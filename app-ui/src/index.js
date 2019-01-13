@@ -1,6 +1,7 @@
 // Must be included here, otherwise it runs into: https://github.com/webpack/webpack/issues/215
 // Must also imported as first so it's the first style in the generated bundle in production build
 import 'styles/core.scss';
+import 'antd/dist/antd.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';

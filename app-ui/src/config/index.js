@@ -24,6 +24,11 @@ const config = {
     admin: {
       index: '/admin',
     },
+    list:{
+        search:{
+            application:'/list/search/applications'
+        }
+    }
   },
 };
 
