@@ -50,8 +50,10 @@ export default class App extends React.Component<Props> {
                 <CaptureNotFoundRoute>
                   <Switch>
                     <Redirect exact from="/" to="/list" />
-                    <Route path="/list" component={secured(Bundles.admin1(store))} />
+                    <Route path="/list" component={(Bundles.admin1(store))} />
+                    /*
                     <Route path="/auth" component={unsecured(Bundles.auth(store))} />
+                    */
                     <NotFoundRoute />
                   </Switch>
                 </CaptureNotFoundRoute>

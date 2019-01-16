@@ -1,19 +1,23 @@
 import React, { PureComponent } from 'react';
 import { List,Menu, Dropdown, Button, Icon, message } from 'antd';
-import TicketItem from './TicketItem';
+import {getItem} from './ItemTaskCompo';
 
 
 export default class Task extends React.PureComponent{
 
+    constructor(props){
+        super(props);
+    }
+
     render(){
         const item = this.props.item;
         const {type} = item;
-        switch(type){
-            case "ticket": return <TicketItem item={item} />
-            default: return <div><h1>hello </h1></div>
-        }
-
-
-
+        var Item = getItem(''+type) ;
+        return(
+         <div>
+            <h1> {this.props.item.type} </h1>
+            <Item item={item} />
+         </div>
+        );
     }
 }
