@@ -24,10 +24,14 @@ export default class Item extends React.PureComponent{
         );
     }
 
+    renderUI(){
+        return <p> {this.props.item.desc}</p>;
+    }
+
     render(){
         return(
             <div>
-                <p> {this.props.item.title}</p>
+                {this.renderUI()}
                 <Dropdown.Button onClick={this.handleButtonClick} overlay={this.menuDrop()}>
                     Acknowledge
                 </Dropdown.Button>

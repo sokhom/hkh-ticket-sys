@@ -15,7 +15,7 @@ export default class Task extends React.PureComponent{
         var Item = getItem(''+type) ;
         return(
          <div>
-            <h1> {this.props.item.type} </h1>
+            <h1> {this.props.item.title} </h1>
             <Item item={item} />
          </div>
         );
