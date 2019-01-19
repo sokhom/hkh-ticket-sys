@@ -4,31 +4,35 @@ import { List,Menu, Dropdown, Button, Icon, message } from 'antd';
 
 export default class Item extends React.PureComponent{
 
-    render(){
+    handleButtonClick(e):void {
+      message.info('Click on left button.');
+      console.log('click left button', e);
+    }
 
-        function handleButtonClick(e) {
-          message.info('Click on left button.');
-          console.log('click left button', e);
-        }
+    handleMenuClick (e):void {
+      message.info('Click on menu item.');
+      console.log('click', e);
+    }
 
-        function handleMenuClick(e) {
-          message.info('Click on menu item.');
-          console.log('click', e);
-        }
-
-        const menu = (
-          <Menu onClick={handleMenuClick}>
+    menuDrop(){
+        return (
+          <Menu onClick={this.handleMenuClick}>
             <Menu.Item key="1"><Icon type="user" />1st menu item</Menu.Item>
             <Menu.Item key="2"><Icon type="user" />2nd menu item</Menu.Item>
             <Menu.Item key="3"><Icon type="user" />3rd item</Menu.Item>
           </Menu>
         );
+    }
 
+    renderUI(){
+        return <p> {this.props.item.desc}</p>;
+    }
+
+    render(){
         return(
             <div>
-                <h1> {this.props.item.type} </h1>
-                <p> {this.props.item.title}</p>
-                <Dropdown.Button onClick={handleButtonClick} overlay={menu}>
+                {this.renderUI()}
+                <Dropdown.Button onClick={this.handleButtonClick} overlay={this.menuDrop()}>
                     Acknowledge
                 </Dropdown.Button>
             </div>

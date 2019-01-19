@@ -12,21 +12,21 @@ export default class TaskList extends PureComponent {
     render() {
 
         const data = [
-              {title:'Racing car sprays burning fuel into crowd.',type:'ticket'},
-              {title:'Japanese princess to wed commoner.',type:'ticket'},
-              {title:'Australian walks 100km after outback crash.',type:'ticket'},
-              {title:'Man charged over missing wedding girl.',type:'ticket'},
-              {title:'Los Angeles battles huge wildfires.',type:'ticket1'}
+              {title:'Racing car',desc:'Racing car sprays burning fuel into crowd.',type:'ticket'},
+              {title:'Japanese princess',desc:'Japanese princess to wed commoner.',type:'ticket'},
+              {title:'Australian walks',desc:'Australian walks 100km after outback crash.',type:'ticket'},
+              {title:'Man charged',desc:'Man charged over missing wedding girl.',type:'ticket'},
+              {title:'Los Angeles battles',desc:'Los Angeles battles huge wildfires.',type:'ticket1'}
             ];
 
         return(
             <div>
                 <List
                     header={<div>Header</div>}
-                     footer={<div>Footer</div>}
-                     bordered
-                     dataSource={data}
-                     renderItem={item => (<List.Item> <Task item={item}/> </List.Item>)}
+                    footer={<div>Footer</div>}
+                    bordered
+                    dataSource={data}
+                    renderItem={item => (<List.Item> <Task item={item}/> </List.Item>)}
                 />
             </div>
         );
