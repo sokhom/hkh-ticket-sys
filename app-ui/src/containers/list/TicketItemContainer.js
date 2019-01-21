@@ -11,7 +11,11 @@ const mapStateToProps = state => ({
 
 
 const mapDispatchToProps = dispatch => ({
-  ticketDone: (status) => dispatch(ticketDone(status))
+  ticketDone: (status) => {
+       console.log('mapDispatchToProps-ticketDone',this.getState());
+       dispatch(ticketDone(status))
+   }
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TicketItem);
