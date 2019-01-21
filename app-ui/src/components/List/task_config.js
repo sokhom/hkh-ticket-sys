@@ -2,7 +2,7 @@
 
 
 const items ={
-       ticket: {name:'ticket',path:'./TicketItem'},
+       ticket: {name:'ticket',path:'containers/list/TicketItemContainer'},
        none: {name:'none',path:'./NoItemException'}
      };
 
