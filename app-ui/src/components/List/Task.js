@@ -2,10 +2,12 @@ import React, { PureComponent } from 'react';
 import { List,Menu, Dropdown, Button, Icon, message } from 'antd';
 import loadable from 'loadable-components';
 import {getItem} from './ItemTaskCompo';
+import { injectReducer } from 'store/reducers';
+import { injectSaga } from 'store/sagas';
+import reducer  from 'modules/list/TicketItemModule'
 
 
-
-export default class Task extends React.PureComponent{
+class Task extends React.PureComponent{
 
     constructor(props){
         super(props);
@@ -14,9 +16,10 @@ export default class Task extends React.PureComponent{
     render(){
         const item = this.props.item;
         const {type} = item;
-//        var Item = getItem(''+type) ;
-           console.log(this.props);
-        const  Item = loadable(() => import('containers/list/TicketItemContainer').then(Item=> Item));
+        const  Item = loadable(() => import('containers/list/TicketItemContainer'));
+       // const  reducer = loadable(() => import('modules/list/TicketItemModule').then(f=>f.default()));
+        console.log('ticketItem, reducer',reducer);
+        injectReducer(this.props.store, { key: 'ticketItem', reducer });
         return(
          <div>
             <h1> {this.props.item.title} </h1>
@@ -24,4 +27,12 @@ export default class Task extends React.PureComponent{
          </div>
         );
     }
+}
+
+export default(store,item) => {
+//        console.log('ticketItem===',store);
+//       var reducer = import('modules/list/TicketItemModule').then(f=> f.default());
+//       console.log('reducer',reducer);
+//       injectReducer(store, { key: 'ticketItem', reducer });
+    return <Task store={store} item={item} />
 }

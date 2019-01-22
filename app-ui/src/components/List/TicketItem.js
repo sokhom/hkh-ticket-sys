@@ -5,13 +5,12 @@ import { List,Menu, Dropdown, Button, Icon, message } from 'antd';
 export default class TicketItem extends Item{
 
     handleMenuClick (e):void {
-          message.info('Click on menu item11. key= '+e.key);
-//          console.log('click', e);
+          console.log('click', this.props);
           this.props.ticketDone(true);
-
     }
     menuDrop(){
         var {type}= this.props.item;
+         console.log('click', this.props);
         return (
           <Menu onClick={e => this.props.ticketDone(false)}>
             <Menu.Item key= {type} ><Icon type="user" /> Done </Menu.Item>

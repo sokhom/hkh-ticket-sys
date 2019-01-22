@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
-
+import loadable from 'loadable-components';
+import Preloader from 'components/Preloader'
 import { Trans } from '@lingui/react';
 import PropTypes from 'prop-types';
 import { Layout, Icon, message } from 'antd';
@@ -11,10 +12,14 @@ import { getMenuData } from '../../common/menu';
 import MenuContainer from '../../containers/Sider/MenuContainer';
 import { Switch, Route,Redirect,BrowserRouter as Router } from 'react-router-dom';
 import AuthenticatedContainer from '../../containers/Header/AuthenticatedContainer';
+//import TaskList from '../List/TaskList';
 
-import TaskList from '../List/TaskList';
 
 const { Content, Header, Footer } = Layout;
+
+const TaskList = store => loadable(() => import('../List/TaskList').then(bundle =>  bundle.default(store)));
+
+
 
 const redirectData = [];
 const getRedirect = item => {
@@ -59,76 +64,76 @@ const query = {
   },
 };
 
-class CoreLayout extends React.PureComponent {
+export default(store) => {
+
+    return class CoreLayout extends React.PureComponent {
 
 
-    componentWillUnmount() {
-//            unenquireScreen(this.enquireHandler);
-    }
-    getPageTitle() {
-        return "ant-d";
-    }
+               componentWillUnmount() {
+           //            unenquireScreen(this.enquireHandler);
+               }
+               getPageTitle() {
+                   return "ant-d";
+               }
 
-    handleMenuCollapse = collapsed => {
-            const { dispatch } = this.props;
-            dispatch({
-              type: 'global/changeLayoutCollapsed',
-              payload: collapsed,
-            });
-        };
+               handleMenuCollapse = collapsed => {
+                       const { dispatch } = this.props;
+                       dispatch({
+                         type: 'global/changeLayoutCollapsed',
+                         payload: collapsed,
+                       });
+                   };
 
-    render() {
-        const {
-                    currentUser,
-                    collapsed,
-                //          fetchingNotices,
-                //          notices,
-                          routerData,
-                //          match,
-                    location,
-                } = this.props;
-        const layout = (
-            <Layout>
-                       <MenuContainer
-                          logo={logo}
-//                          Authorized={Authorized}
-                          menuData={getMenuData()}
-            //              collapsed={collapsed}
-                          location={location}
-            //             isMobile={mb}
-            //            onCollapse={this.handleMenuCollapse}
-                        />
-                        <Layout>
-                            <Header style={{ padding: 0 }}>
-                                <AuthenticatedContainer/>
-                            </Header>
-                            <Content style={{ margin: '24px 24px 0', height: '100%' }}>
-                                <Switch>
-//                                 d<Redirect from="/admin1" to="/list/task-list"/>
-                                    <Route path="/list/task-list" component={TaskList}/>
-                                </Switch>
+               render() {
+//                   const tasks =TaskList.tasks(store);
+                                        //                   console.log(tasks);
+                   const {
+                               currentUser,
+                               collapsed,
+                           //          fetchingNotices,
+                           //          notices,
+                                     routerData,
+                           //          match,
+                               location,
+                           } = this.props;
+                   const layout = (
+                       <Layout>
+                                  <MenuContainer
+                                     logo={logo}
+           //                          Authorized={Authorized}
+                                     menuData={getMenuData()}
+                       //              collapsed={collapsed}
+                                     location={location}
+                       //             isMobile={mb}
+                       //            onCollapse={this.handleMenuCollapse}
+                                   />
+                                   <Layout>
+                                       <Header style={{ padding: 0 }}>
+                                           <AuthenticatedContainer/>
+                                       </Header>
+                                       <Content style={{ margin: '24px 24px 0', height: '100%' }}>
+                                           <Switch>
+           //                                  <Redirect from="/admin1" to="/list/task-list"/>
+                                               <Route path="/list/task-list" component={TaskList(store)}/>
+                                           </Switch>
 
-                             </Content>
-                         </Layout>
-           </Layout>
+                                        </Content>
+                                    </Layout>
+                      </Layout>
 
-        );
+                   );
+               console.log('coreLayout: ',store);
+               return (
 
-
-    return (
-
-             <DocumentTitle title={this.getPageTitle()}>
-                <ContainerQuery query={query}>
-                    {params => <div className={classNames(params)}>{layout}</div>}
-                </ContainerQuery>
-             </DocumentTitle>
-
-
-            );
-    }
-
+                        <DocumentTitle title={this.getPageTitle()}>
+                           <ContainerQuery query={query}>
+                               {params => <div className={classNames(params)}>{layout}</div>}
+                           </ContainerQuery>
+                        </DocumentTitle>
+                       );
+               }
 
 
+
+           }
 }
-
-export default() => CoreLayout;

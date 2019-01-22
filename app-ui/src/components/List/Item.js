@@ -25,7 +25,7 @@ export default class Item extends React.PureComponent{
     }
 
     renderUI(){
-        return <p> {'this.props.item.desc'}</p>;
+        return <p> {this.props.item.desc}</p>;
     }
 
     render(){
