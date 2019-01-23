@@ -122,7 +122,7 @@ export default(store) => {
                       </Layout>
 
                    );
-               console.log('coreLayout: ',store);
+
                return (
 
                         <DocumentTitle title={this.getPageTitle()}>
