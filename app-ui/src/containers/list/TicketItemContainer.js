@@ -4,7 +4,7 @@ import { updateTaskItem } from 'modules/list/TaskListModule';
 import TicketItem from 'components/List/TicketItem'
 
 const mapStateToProps = state =>{
-    console.log('mapStateToProps-TicketItemContainer',state);
+//    console.log('mapStateToProps-TicketItemContainer',state);
     return ({
       type: state.ticketItem.type
     })

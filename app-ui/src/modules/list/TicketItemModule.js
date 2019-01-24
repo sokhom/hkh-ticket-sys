@@ -12,7 +12,7 @@ export const ticketDone = createAction('TICKET_DONE');
 export default combineReducers({
     request:handleActions({
         [ticketDone]: (state,action) =>{
-            console.log('ticketDone',state);
+//            console.log('ticketDone',state);
             return {...state, type: action.payload.type};
         }
 

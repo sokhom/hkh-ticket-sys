@@ -21,7 +21,7 @@ export default handleActions({
         task.id == action.id ? {...task,title:'Edit ticket ' + action.id}: task
     ),
   [updateTaskItem]:(state,action)=> {
-            console.log('updateTaskItem',state);
+//            console.log('updateTaskItem',state);
             return {data:state.data.map(task => task.id == action.payload.id ?  action.payload: task )};
   }
 //

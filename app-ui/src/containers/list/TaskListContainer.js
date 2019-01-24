@@ -4,7 +4,7 @@ import TaskList from 'components/List/TaskList'
 
 const mapStateToProps = state =>{
 //    console.log('mapStateToProps', state);
-    console.log('mapStateToProps11', state);
+//    console.log('mapStateToProps11', state);
     return ({
       data: state.tasks.data
     })
