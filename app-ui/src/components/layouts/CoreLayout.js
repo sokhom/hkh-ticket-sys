@@ -17,7 +17,7 @@ import AuthenticatedContainer from '../../containers/Header/AuthenticatedContain
 
 const { Content, Header, Footer } = Layout;
 
-const TaskList = store => loadable(() => import('../List/TaskList').then(bundle =>  bundle.default(store)));
+const TaskList = store => loadable(() => import('containers/list/TaskListContainer').then(bundle =>  bundle.default(store)));
 
 
 

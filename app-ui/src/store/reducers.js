@@ -7,6 +7,7 @@ import i18nReducer from 'modules/I18nModule';
 import stateReducer from 'modules/StateModule';
 import userReducer from 'modules/UserModule';
 import globalReducer from 'modules/GlobalModule';
+import taskListReducer from 'modules/list/TaskListModule';
 
 // https://github.com/zalmoxisus/redux-devtools-instrument/pull/19#issuecomment-400637274
 // https://github.com/reduxjs/redux/issues/2943
@@ -24,6 +25,7 @@ export const makeRootReducer = (asyncReducers) => {
     i18n: i18nReducer,
     user: userReducer,
     global:globalReducer,
+    tasks: taskListReducer,
     ...asyncReducers,
   });
 

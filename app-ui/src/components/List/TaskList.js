@@ -17,18 +17,18 @@ export default(store) => {
                   {title:'Man charged',desc:'Man charged over missing wedding girl.',type:'ticket'},
                   {title:'Los Angeles battles',desc:'Los Angeles battles huge wildfires.',type:'ticket1'}
                 ];
-//            console.log('TaskList=====',store);
+
             return(
                 <div>
                     <List
                         header={<div>Header</div>}
                         footer={<div>Footer</div>}
                         bordered
-                        dataSource={data}
+                        dataSource={this.props.data}
                         renderItem={item => (<List.Item> {Task(store,item)} </List.Item>)}
                     />
                 </div>
             );
-        }
+        }st
     }
 }
