@@ -1,13 +1,21 @@
 // @flow
+import { combineReducers } from 'redux';
 import { createAction, handleActions } from 'redux-actions';
-
+import { formReducer, modelReducer } from 'react-redux-form';
 export const initialState = {
-  status: false
+  type: ''
 };
-
+export const modelPath: string = 'tasks.ticketItem';
 export const ticketDone = createAction('TICKET_DONE');
 
 
-export default handleActions({
-  [ticketDone]: (state,action) => ({ ...state, status: action.payload })
-}, initialState);
+export default combineReducers({
+    request:handleActions({
+        [ticketDone]: (state,action) =>{
+            console.log('ticketDone',state);
+            return {...state, type: action.payload.type};
+        }
+
+    }, initialState),
+    data: modelReducer(modelPath,initialState)
+});

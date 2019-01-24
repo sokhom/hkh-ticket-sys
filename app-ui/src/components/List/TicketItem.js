@@ -10,9 +10,8 @@ export default class TicketItem extends Item{
     }
     menuDrop(){
         var {type}= this.props.item;
-         console.log('click', this.props);
         return (
-          <Menu onClick={e => this.props.ticketDone(false)}>
+          <Menu onClick={e => this.props.ticketDone(this.props.item)}>
             <Menu.Item key= {type} ><Icon type="user" /> Done </Menu.Item>
           </Menu>
         );

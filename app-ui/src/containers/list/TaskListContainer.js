@@ -3,8 +3,8 @@ import { openTask } from 'modules/list/TaskListModule';
 import TaskList from 'components/List/TaskList'
 
 const mapStateToProps = state =>{
-    console.log('mapStateToProps', state);
-    console.log('mapStateToProps11', state.tasks.data);
+//    console.log('mapStateToProps', state);
+    console.log('mapStateToProps11', state);
     return ({
       data: state.tasks.data
     })
@@ -12,7 +12,7 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch => ({
   openTask: (task) => {
-       console.log('mapDispatchToProps-openTask',ticketDone);
+//       console.log('mapDispatchToProps-openTask',ticketDone);
        dispatch(openTask(task))
   }
 });

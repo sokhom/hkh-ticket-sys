@@ -6,7 +6,6 @@ import { injectReducer } from 'store/reducers';
 import { injectSaga } from 'store/sagas';
 import reducer  from 'modules/list/TicketItemModule'
 
-
 class Task extends React.PureComponent{
 
     constructor(props){
@@ -18,7 +17,7 @@ class Task extends React.PureComponent{
         const {type} = item;
         const  Item = loadable(() => import('containers/list/TicketItemContainer'));
        // const  reducer = loadable(() => import('modules/list/TicketItemModule').then(f=>f.default()));
-        console.log('ticketItem, reducer',reducer);
+//        console.log('ticketItem, reducer',reducer);
         injectReducer(this.props.store, { key: 'ticketItem', reducer });
         return(
          <div>
@@ -30,9 +29,5 @@ class Task extends React.PureComponent{
 }
 
 export default(store,item) => {
-//        console.log('ticketItem===',store);
-//       var reducer = import('modules/list/TicketItemModule').then(f=> f.default());
-//       console.log('reducer',reducer);
-//       injectReducer(store, { key: 'ticketItem', reducer });
     return <Task store={store} item={item} />
 }

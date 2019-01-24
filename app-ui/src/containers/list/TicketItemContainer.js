@@ -1,18 +1,20 @@
 import { connect } from 'react-redux';
 import { ticketDone } from 'modules/list/TicketItemModule';
+import { updateTaskItem } from 'modules/list/TaskListModule';
 import TicketItem from 'components/List/TicketItem'
 
 const mapStateToProps = state =>{
-//    console.log('mapStateToProps',state);
+    console.log('mapStateToProps-TicketItemContainer',state);
     return ({
-      status: state.ticketItem.status
+      type: state.ticketItem.type
     })
 } ;
 
 const mapDispatchToProps = dispatch => ({
-  ticketDone: (status) => {
+  ticketDone: (item) => {
 //       console.log('mapDispatchToProps-ticketDone',status);
-       dispatch(ticketDone(!status))
+       dispatch(ticketDone(item))
+       dispatch(updateTaskItem(item));
   }
 });
 
