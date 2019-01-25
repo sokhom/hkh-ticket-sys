@@ -13,12 +13,12 @@ class Task extends React.PureComponent{
     }
 
     render(){
+         injectReducer(this.props.store, { key: 'ticketItem', reducer });
+
         const item = this.props.item;
         const {type} = item;
         const  Item = loadable(() => import('containers/list/TicketItemContainer'));
-       // const  reducer = loadable(() => import('modules/list/TicketItemModule').then(f=>f.default()));
-//        console.log('ticketItem, reducer',reducer);
-        injectReducer(this.props.store, { key: 'ticketItem', reducer });
+
         return(
          <div>
             <h1> {this.props.item.title} </h1>

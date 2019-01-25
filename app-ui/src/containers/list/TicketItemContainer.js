@@ -12,8 +12,8 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch => ({
   ticketDone: (item) => {
-//       console.log('mapDispatchToProps-ticketDone',status);
-       dispatch(ticketDone(item))
+       console.log('mapDispatchToProps-ticketDone',item);
+//       dispatch(ticketDone(item))
        dispatch(updateTaskItem(item));
   }
 });
