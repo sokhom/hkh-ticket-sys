@@ -18,7 +18,7 @@ export default class TicketItem extends Item{
             if (err) {
                 return;
             }
-            console.log('Received values of form: ', values);
+//            console.log('Received values of form: ', values);
             this.props.ticketDone({...this.props.item,desc:values.desc});
             form.resetFields();
             this.setState({ visible: false });
@@ -35,12 +35,28 @@ export default class TicketItem extends Item{
         this.formRef = formRef;
     }
 
+    handleDropDownMenu = (e) => {
+        const {key} = e;
+        switch (key){
+            case 'done_ticket' :
+                this.showModal(this.props.item);
+                break;
+            case 'open_ticket' :
+                console.log('open ticket');
+                break;
+            default :
+                console.log('handle not match.');
+                break;
+        }
+    }
+
     //@@override
     menuDrop(){
         var {type}= this.props.item;
         return (
-          <Menu onClick={()=>this.showModal(this.props.item)}>
-            <Menu.Item key= {type} ><Icon type="user" /> Done </Menu.Item>
+          <Menu onClick={this.handleDropDownMenu}>
+            <Menu.Item key= 'open_ticket' ><Icon type="user" /> Open Ticket</Menu.Item>
+            <Menu.Item key= 'done_ticket' ><Icon type="user" /> Done </Menu.Item>
           </Menu>
         );
     }

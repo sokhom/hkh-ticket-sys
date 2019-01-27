@@ -7,15 +7,13 @@ export const initialState = {
 };
 export const modelPath: string = 'tasks.ticketItem';
 export const ticketDone = createAction('TICKET_DONE');
+export const ticketDone1 = createAction('TICKET_DONE1');
 
 
-export default combineReducers({
-    request:handleActions({
-        [ticketDone]: (state,action) =>{
+export default handleActions({
+        [ticketDone1]: (state,action) =>{
 //            console.log('ticketDone',state);
             return {...state, type: action.payload.type};
         }
 
-    }, initialState),
-    data: modelReducer(modelPath,initialState)
-});
+    }, initialState);

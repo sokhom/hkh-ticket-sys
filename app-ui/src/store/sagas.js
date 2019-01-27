@@ -5,6 +5,7 @@ import configSagaBinding from 'sagas/ConfigSaga';
 import i18nSagaBinding from 'sagas/I18nSaga';
 import userSagaBinding from 'sagas/UserSaga';
 import { sagaMiddleware } from './middleware';
+import taskSagaBinding from 'sagas/list/TaskSaga';
 
 export function* rootSaga() {
   yield all(combineSagas([
@@ -12,6 +13,7 @@ export function* rootSaga() {
     configSagaBinding,
     i18nSagaBinding,
     userSagaBinding,
+    taskSagaBinding,
   ]));
 }
 

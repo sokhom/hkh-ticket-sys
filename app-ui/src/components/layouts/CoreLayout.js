@@ -12,7 +12,7 @@ import { getMenuData } from '../../common/menu';
 import MenuContainer from '../../containers/Sider/MenuContainer';
 import { Switch, Route,Redirect,BrowserRouter as Router } from 'react-router-dom';
 import AuthenticatedContainer from '../../containers/Header/AuthenticatedContainer';
-//import TaskList from '../List/TaskList';
+import TabPanel from 'components/common/TabPanel';
 
 
 const { Content, Header, Footer } = Layout;
@@ -113,8 +113,8 @@ export default(store) => {
                                        </Header>
                                        <Content style={{ margin: '24px 24px 0', height: '100%' }}>
                                            <Switch>
-           //                                  <Redirect from="/admin1" to="/list/task-list"/>
-                                               <Route path="/list/task-list" component={TaskList(store)}/>
+           //                                  <Redirect from="/admin1" to="/list/task-listTaskList(store)"/>
+                                               <Route path="/list/task-list" component={TabPanel}/>
                                            </Switch>
 
                                         </Content>

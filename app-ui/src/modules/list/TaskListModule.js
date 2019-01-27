@@ -14,13 +14,14 @@ export const initialState = {
 
 export const openTask = createAction('OPEN_TASK');
 export const updateTaskItem = createAction('UPDATE_TASK_ITEM');
+export const updateItemInTaskList = createAction('UPDATE_ITEM_IN_TASK_LIST');
 
 export default handleActions({
   [openTask]: (state,action) =>
     state.tasks.data.map(task =>
         task.id == action.id ? {...task,title:'Edit ticket ' + action.id}: task
     ),
-  [updateTaskItem]:(state,action)=> {
+  [updateItemInTaskList]:(state,action)=> {
             return {data:state.data.map(task => task.id == action.payload.id ?  action.payload: task )};
   }
 }, initialState);
