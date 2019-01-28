@@ -85,8 +85,8 @@ export default(store) => {
                    };
 
                render() {
-//                   const tasks =TaskList.tasks(store);
-                                        //                   console.log(tasks);
+                   const TabPane =TabPanel(store);
+                    const tabs = <TabPane><div>hello</div></TabPane>;
                    const {
                                currentUser,
                                collapsed,
@@ -114,7 +114,7 @@ export default(store) => {
                                        <Content style={{ margin: '24px 24px 0', height: '100%' }}>
                                            <Switch>
            //                                  <Redirect from="/admin1" to="/list/task-listTaskList(store)"/>
-                                               <Route path="/list/task-list" component={TabPanel}/>
+                                               <Route path="/list/task-list" component={TabPane}/>
                                            </Switch>
 
                                         </Content>
