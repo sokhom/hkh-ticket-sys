@@ -22,12 +22,12 @@ class Task extends React.PureComponent{
         return(
          <div>
             <h1> {this.props.item.title} </h1>
-            <Item item={item}/>
+            <Item item={item} onNewTabItem={this.props.onNewTabItem}/>
          </div>
         );
     }
 }
 
-export default(store,item) => {
-    return <Task store={store} item={item} />
+export default(store,item,onNewTabItem) => {
+    return <Task store={store} item={item} onNewTabItem={onNewTabItem} />
 }

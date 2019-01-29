@@ -5,6 +5,7 @@ import Task from './Task';
 export default(store) => {
     return class TaskList extends React.PureComponent {
         render(){
+
             return(
                 <div>
                     <List
@@ -12,7 +13,7 @@ export default(store) => {
                         footer={<div>Footer</div>}
                         bordered
                         dataSource={this.props.data}
-                        renderItem={item => (<List.Item> {Task(store,item)} </List.Item>)}
+                        renderItem={item => (<List.Item> {Task(store,item,this.props.onNewTabItem)} </List.Item>)}
                     />
                 </div>
             );

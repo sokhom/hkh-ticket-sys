@@ -13,13 +13,11 @@ export default(store,children:Props ) => {
                constructor(props) {
                    super(props);
                    this.newTabIndex = 0;
-                   //
                    const panes = [
-                     //{ title: 'Tab 1', content: TaskListContainer(store), key: '1' },
                      { title: 'Tab 2', content: 'Content of Tab Pane 2', key: '2' },
                    ];
                    this.state = {
-                     activeKey: panes[0].key,
+                     activeKey: '1',
                      panes,
                    };
                  }
@@ -57,6 +55,14 @@ export default(store,children:Props ) => {
                    this.setState({ panes, activeKey });
                  }
 
+                 onNewTabItem=(itemData)=>{
+                    const panes = this.state.panes;
+                    const activeKey = `newTab${this.newTabIndex++}`;
+                    const  Item = loadable(() => import('containers/list/TicketItemContainer'));
+                    panes.push({ title: itemData.title, content: <Item item={itemData}/>, key: activeKey });
+                    this.setState({ panes, activeKey });
+                 }
+
                  render() {
                     const  TaskListContainer = loadable(() => import('containers/list/TaskListContainer').then(bandle => bandle.default(store)));
                    return (
@@ -71,7 +77,7 @@ export default(store,children:Props ) => {
                          type="editable-card"
                          onEdit={this.onEdit}
                        >
-                        <TabPane tab='Task List' key='1' closable={false}><TaskListContainer/></TabPane>
+                        <TabPane tab='Task List' key='1' closable={false}><TaskListContainer onNewTabItem={this.onNewTabItem}/></TabPane>
                         {this.state.panes.map(pane => <TabPane tab={pane.title} key={pane.key}>{pane.content}</TabPane>)}
                        </Tabs>
                      </div>
