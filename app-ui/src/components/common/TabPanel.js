@@ -77,6 +77,8 @@ export default(store,children:Props ) => {
                          type="editable-card"
                          onEdit={this.onEdit}
                        >
+                       
+
                         <TabPane tab='Task List' key='1' closable={false}><TaskListContainer onNewTabItem={this.onNewTabItem}/></TabPane>
                         {this.state.panes.map(pane => <TabPane tab={pane.title} key={pane.key}>{pane.content}</TabPane>)}
                        </Tabs>
