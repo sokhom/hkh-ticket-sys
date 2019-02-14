@@ -17,7 +17,7 @@ import TabPanel from 'components/common/TabPanel';
 
 const { Content, Header, Footer } = Layout;
 
-const TaskList = store => loadable(() => import('containers/list/TaskListContainer').then(bundle =>  bundle.default(store)));
+//const TaskList = store => loadable(() => import('containers/list/TaskListContainer').then(bundle =>  bundle.default(store)));
 
 
 
@@ -86,7 +86,7 @@ export default(store) => {
 
                render() {
                    const TabPane =TabPanel(store);
-                    const tabs = <TabPane><div>hello</div></TabPane>;
+
                    const {
                                currentUser,
                                collapsed,
