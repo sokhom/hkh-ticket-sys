@@ -13,7 +13,7 @@ class Task extends React.PureComponent{
     }
 
     render(){
-         injectReducer(this.props.store, { key: 'ticketItem', reducer });
+//         injectReducer(this.props.store, { key: 'ticketItem', reducer });
 
         const item = this.props.item;
         const {type} = item;

@@ -2,8 +2,9 @@ import React, { PureComponent } from 'react';
 import { List } from 'antd';
 import Task from './Task';
 
-export default(store) => {
-    return class TaskList extends React.PureComponent {
+//export default(store) => {
+//    return
+    class TaskList extends React.PureComponent {
         render(){
             return(
                 <div>
@@ -18,4 +19,6 @@ export default(store) => {
             );
         }
     }
-}
+//}
+
+export default TaskList
