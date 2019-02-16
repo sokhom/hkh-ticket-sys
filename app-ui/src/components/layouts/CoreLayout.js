@@ -12,14 +12,12 @@ import { getMenuData } from '../../common/menu';
 import MenuContainer from '../../containers/Sider/MenuContainer';
 import { Switch, Route,Redirect,BrowserRouter as Router } from 'react-router-dom';
 import AuthenticatedContainer from '../../containers/Header/AuthenticatedContainer';
-//import TabPanel from 'components/common/TabPanel';
+import TabPanel from 'components/common/TabPanel';
 
 
 const { Content, Header, Footer } = Layout;
 
 //const TaskList = store => loadable(() => import('containers/list/TaskListContainer').then(bundle =>  bundle.default(store)));
-
-const TabPanel = store => loadable(() => import('components/common/TabPanel').then(bundle =>  bundle.default(store)));
 
 
 
@@ -87,10 +85,7 @@ export default(store) => {
                    };
 
                render() {
-//                   const tasks =TaskList.tasks(store);
-                                        //                   console.log(tasks);
-//                   const tabPanel = TabPanel(store);
-//                   console.log(tabPanel);
+                   const TabPane =TabPanel(store);
 
                    const {
                                currentUser,
@@ -119,7 +114,7 @@ export default(store) => {
                                        <Content style={{ margin: '24px 24px 0', height: '100%' }}>
                                            <Switch>
            //                                  <Redirect from="/admin1" to="/list/task-listTaskList(store)"/>
-                                               <Route path="/list/task-list" component={TabPanel(store)}/>
+                                               <Route path="/list/task-list" component={TabPane}/>
                                            </Switch>
 
                                         </Content>

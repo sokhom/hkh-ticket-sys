@@ -42,7 +42,7 @@ export default class TicketItem extends Item{
                 this.showModal(this.props.item);
                 break;
             case 'open_ticket' :
-                console.log('open ticket');
+                this.props.onNewTabItem(this.props.item);
                 break;
             default :
                 console.log('handle not match.');

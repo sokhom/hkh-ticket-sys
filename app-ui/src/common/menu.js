@@ -22,7 +22,7 @@ const menuData = [
         // hideInMenu: true,
       },
     ],
-  },/*
+  }/*,
   {
     name: '表单页',
     icon: 'form',
@@ -42,7 +42,7 @@ const menuData = [
         path: 'advanced-form',
       },
     ],
-  },*/
+  }*/,
   {
     name: '列表页',
     icon: 'table',
@@ -55,7 +55,7 @@ const menuData = [
       {
         name: 'Task List',
         path: 'task-list',
-      }/*,
+      },
       {
         name: '卡片列表',
         path: 'card-list',
@@ -77,7 +77,7 @@ const menuData = [
             path: 'applications1',
           },
         ],
-      },*/
+      },
     ],
   }/*,
   {
