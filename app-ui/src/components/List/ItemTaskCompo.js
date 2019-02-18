@@ -19,13 +19,13 @@ function getComp(itemType){
     if(comp){
         return comp;
     }else{
-        var {path} = getItemConfig(itemType);
+        var {path,component} = getItemConfig(itemType);
         console.log('`${path}`',`${path}`);
         var parthString = "'" + path+ "'"
         const  compo = loadable(() => import(`${path}`));
-         console.log(compo);
+         console.log(component);
 //       comps[`${path}`] = compo;
-            return compo;
+            return component();
     }
 }
 
