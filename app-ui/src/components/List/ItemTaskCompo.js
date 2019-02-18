@@ -20,11 +20,12 @@ function getComp(itemType){
         return comp;
     }else{
         var {path} = getItemConfig(itemType);
-        const  compo = loadable(() => import(`${path}`).then(Item=> Item));
+        console.log('`${path}`',`${path}`);
+        var parthString = "'" + path+ "'"
+        const  compo = loadable(() => import(`${path}`));
          console.log(compo);
-        comps[`${path}`] = compo;
-
-        return compo;
+//       comps[`${path}`] = compo;
+            return compo;
     }
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Tabs,Button } from 'antd';
 import loadable from 'loadable-components';
+import  {getItem} from'components/List/ItemTaskCompo'
 
 const TabPane = Tabs.TabPane;
 type Props = {
@@ -63,7 +64,7 @@ export default(store,children:Props ) => {
             if(isPane){
                 this.setState({ panes, activeKey });
             }else{
-                const  Item = loadable(() => import('containers/list/TicketItemContainer'));
+                const  Item = getItem('ticket'); //loadable(() => import('containers/list/TicketItemContainer'));
                 panes.push({ id:itemData.id,title: itemData.title, content: <Item item={itemData}/>, key: activeKey });
                 this.setState({ panes, activeKey });
             }
