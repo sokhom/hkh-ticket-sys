@@ -2,7 +2,9 @@ import React from 'react';
 import { Tabs,Button } from 'antd';
 import loadable from 'loadable-components';
 import  {getItem} from'components/List/ItemTaskCompo'
-import TicketItemView from 'components/list/TicketItemView'
+import TicketItemView from 'components/List/TicketItemView'
+
+import styles from './Analysis.less';
 const TabPane = Tabs.TabPane;
 type Props = {
   children: Node,
@@ -76,7 +78,7 @@ export default(store,children:Props ) => {
             const  TaskListContainer = loadable(() => import('containers/list/TaskListContainer').then(bandle => bandle.default(store)));
             return (
                 <div>
-                    <div style={{ marginBottom: 16 }}>
+                    <div className={styles.salesExtraWrap}>
                       <Button onClick={this.add}>Create</Button>
                     </div>
                     <Tabs
