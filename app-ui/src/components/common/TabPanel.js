@@ -2,7 +2,7 @@ import React from 'react';
 import { Tabs,Button } from 'antd';
 import loadable from 'loadable-components';
 import  {getItem} from'components/List/ItemTaskCompo'
-
+import TicketItemView from 'components/list/TicketItemView'
 const TabPane = Tabs.TabPane;
 type Props = {
   children: Node,
@@ -64,9 +64,10 @@ export default(store,children:Props ) => {
             if(isPane){
                 this.setState({ panes, activeKey });
             }else{
-                const  Item = getItem('ticket'); //loadable(() => import('containers/list/TicketItemContainer'));
-                panes.push({ id:itemData.id,title: itemData.title, content: <Item item={itemData}/>, key: activeKey });
+//                const  Item = getItem('ticketView'); //loadable(() => import('containers/list/TicketItemContainer'));
+//              panes.push({ id:itemData.id,title: itemData.title, content: <Item item={itemData}/>, key: activeKey });
                 this.setState({ panes, activeKey });
+                panes.push({ id:itemData.id,title: itemData.title, content: <TicketItemView />, key: activeKey });
             }
             console.log('panes',panes);
         }
@@ -75,6 +76,9 @@ export default(store,children:Props ) => {
             const  TaskListContainer = loadable(() => import('containers/list/TaskListContainer').then(bandle => bandle.default(store)));
             return (
                 <div>
+                    <div style={{ marginBottom: 16 }}>
+                      <Button onClick={this.add}>Create</Button>
+                    </div>
                     <Tabs
                         hideAdd
                         onChange={this.onChange}
@@ -91,3 +95,4 @@ export default(store,children:Props ) => {
         }
     }
 }
+
