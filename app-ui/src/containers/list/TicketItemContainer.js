@@ -4,7 +4,7 @@ import { ticketDone } from 'modules/list/TicketItemModule';
 import TicketItem from 'components/List/TicketItem'
 
 const mapStateToProps = state =>{
-    console.log('mapStateToProps-TicketItemContainer',state);
+//    console.log('mapStateToProps-TicketItemContainer',state);
     return ({
       type: false
     })
