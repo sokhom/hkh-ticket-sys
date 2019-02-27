@@ -71,7 +71,6 @@ export default(store,children:Props ) => {
                 }else{
                     activeKey='newTab0';
                 }
-
             }
             this.setState({ panes, activeKey });
         }
@@ -90,7 +89,7 @@ export default(store,children:Props ) => {
             if(isPane){
                 this.setState({ panes, activeKey });
             }else{
-//                const  Item = getItem('ticketView'); //loadable(() => import('containers/list/TicketItemContainer'));
+//              const  Item = getItem('ticketView'); //loadable(() => import('containers/list/TicketItemContainer'));
 //              panes.push({ id:itemData.id,title: itemData.title, content: <Item item={itemData}/>, key: activeKey });
                 this.setState({ panes, activeKey });
                 panes.push({ id:itemData.id,title: itemData.title, content: <TicketItemView />, key: activeKey });
@@ -140,6 +139,10 @@ class CreateNewTask extends React.Component {
     filter(inputValue, path)    {
         return (path.some(option => (option.label).toLowerCase().indexOf(inputValue.toLowerCase()) > -1));
     }
+    onOpenModal(){
+        console.log('open modal.....');
+    }
+
     render() {
         const { form } = this.props;
         const options = [{
@@ -172,7 +175,7 @@ class CreateNewTask extends React.Component {
 
         return (
             <div>
-                <ModalNewTask />
+                <ModalTask showModal />
                 <Form layout="inline" className={styles.panelRight}>
                     <FormItem label="" >
                         {form.getFieldDecorator('status')(
@@ -186,7 +189,7 @@ class CreateNewTask extends React.Component {
                         )}
                     </FormItem>
                     <FormItem>
-                        <Button type="primary" htmlType="submit">
+                        <Button type="primary" htmlType="submit" onClick={this.onOpenModal} >
                             Create
                         </Button>
                     </FormItem>
@@ -210,6 +213,7 @@ class ModalNewTask extends React.Component {
     this.setState({
       visible: true,
     });
+    this.props.showModal();
   }
 
   handleOk = () => {
@@ -225,9 +229,13 @@ class ModalNewTask extends React.Component {
 
   render() {
     const { visible, loading } = this.state;
+    const {showModal} = this.props
+    console.log('showModal',showModal);
+
+
     return (
       <div>
-        <Button type="primary" onClick={this.showModal}>
+        <Button type="primary" >
           Open Modal with customized footer
         </Button>
         <Modal
@@ -239,7 +247,7 @@ class ModalNewTask extends React.Component {
             <Button key="back" onClick={this.handleCancel}>Return</Button>,
             <Button key="submit" type="primary" loading={loading} onClick={this.handleOk}>
               Submit
-            </Button>,
+            </Button>
           ]}
         >
           <p>Some contents...</p>
@@ -251,6 +259,13 @@ class ModalNewTask extends React.Component {
       </div>
     );
   }
+
+}
+
+export const ModalTask = (onOpenModal) => {
+
+    return < ModalNewTask />     ;
+
 }
 
 
