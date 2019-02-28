@@ -94,7 +94,7 @@ export default(store,children:Props ) => {
                 this.setState({ panes, activeKey });
                 panes.push({ id:itemData.id,title: itemData.title, content: <TicketItemView />, key: activeKey });
             }
-            console.log('panes',panes);
+
         }
 
         render() {
@@ -130,21 +130,66 @@ export default(store,children:Props ) => {
 
 class CreateNewTask extends React.Component {
 
+
     constructor(props) {
         super(props);
+         this.state = {
+                    loading: false,
+                    visible: false,
+                    itemType: ''
+                }
     }
-    onChange(value, selectedOptions)  {
-        console.log(value, selectedOptions);
+
+    onChange =(value, selectedOptions) => {
+        this.setItemType(this.getTitle(selectedOptions));
+
+
+        this.onOpenModal();
     }
-    filter(inputValue, path)    {
+    setItemType = (itemType) =>{
+        this.setState({ itemType: itemType});
+    }
+    getTitle=(selectedOptions)=>  {
+        var title = '';
+        selectedOptions.some(v => {
+            var itemType = v.label;
+            if(title !==''){
+                itemType = ' / ' +  itemType;
+            }
+            title = title + itemType;
+        });
+        return title;
+    }
+    filter = (inputValue, path) =>   {
         return (path.some(option => (option.label).toLowerCase().indexOf(inputValue.toLowerCase()) > -1));
     }
-    onOpenModal(){
-        console.log('open modal.....');
+    onOpenModal = () =>{
+        const { getFieldsValue } = this.props.form;
+        console.log('form.getFieldsValue()  ',getFieldsValue() );
+        const { form: { validateFields } } = this.props;
+        validateFields((err, values) => {
+
+            console.log('onOpenModal err',err);
+             if (!err) {
+                this.setState({ visible: true});
+            }
+        });
+    }
+    handleOk = () => {
+        this.setState({ visible: false });
+//        console.log('visible',this.state);
+    }
+
+    handleCancel = () =>{
+        this.setState({ visible: false });
+//        console.log('visible',this.state);
     }
 
     render() {
         const { form } = this.props;
+        const { visible, loading,itemType } = this.state;
+
+//        console.log('visible',visible);
         const options = [{
             value: 'zhejiang',
             label: 'Zhejiang',
@@ -175,15 +220,33 @@ class CreateNewTask extends React.Component {
 
         return (
             <div>
-                <ModalTask showModal />
+                <ModalNewTask
+                    title = {itemType}
+                    visible={visible}
+                    handleOk={this.handleOk}
+                    handleCancel={this.handleCancel}
+                >
+                    <TicketItemView />
+                </ModalNewTask>
+
                 <Form layout="inline" className={styles.panelRight}>
                     <FormItem label="" >
-                        {form.getFieldDecorator('status')(
+                        {form.getFieldDecorator('itemType',{
+                            rules: [{ required: true, message: 'Please select item type!',
+//                                    validator:(rule, value, callback) =>{
+//                                              // Some async check
+//                                              callback();
+//                                           }
+                                },
+
+                            ],
+                        })(
                             <Cascader
                                 style={{ width: '100%' }}
                                 options={options}
-                                onChange={this.onChange}
-                                placeholder="Please select item type"
+
+                                onChange={this.onChange.bind(this)}
+                                placeholder="itemType"
                                 showSearch={{filter:this.filter}}
                             />
                         )}
@@ -198,73 +261,30 @@ class CreateNewTask extends React.Component {
         );
     }
 }
-
 export const NewTask = Form.create()(CreateNewTask);
 
 
-
 class ModalNewTask extends React.Component {
-  state = {
-    loading: false,
-    visible: false,
-  }
-
-  showModal = () => {
-    this.setState({
-      visible: true,
-    });
-    this.props.showModal();
-  }
-
-  handleOk = () => {
-    this.setState({ loading: true });
-    setTimeout(() => {
-      this.setState({ loading: false, visible: false });
-    }, 3000);
-  }
-
-  handleCancel = () => {
-    this.setState({ visible: false });
-  }
-
   render() {
-    const { visible, loading } = this.state;
-    const {showModal} = this.props
-    console.log('showModal',showModal);
-
+    const { title,visible,handleOk,handleCancel,children} = this.props;
 
     return (
       <div>
-        <Button type="primary" >
-          Open Modal with customized footer
-        </Button>
         <Modal
           visible={visible}
-          title="Title"
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
+          title={title}
+          onOk={handleOk}
+          onCancel={handleCancel}
           footer={[
-            <Button key="back" onClick={this.handleCancel}>Return</Button>,
-            <Button key="submit" type="primary" loading={loading} onClick={this.handleOk}>
-              Submit
-            </Button>
+            <Button key="back" onClick={handleCancel}>Cancel</Button>,
+            <Button key="submit" type="primary" onClick={handleOk}>Create</Button>
           ]}
         >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
+          {children}
         </Modal>
       </div>
     );
   }
-
-}
-
-export const ModalTask = (onOpenModal) => {
-
-    return < ModalNewTask />     ;
 
 }
 
