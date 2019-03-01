@@ -1,0 +1,91 @@
+import React, { Component } from 'react';
+//import { formatMessage, FormattedMessage } from 'umi/locale';
+import {
+  Card,
+  Button,
+  Form,
+  Icon,
+  Col,
+  Row,
+  DatePicker,
+  TimePicker,
+  Input,
+  Select,
+  Popover,
+  Collapse,
+  Cascader
+} from 'antd';
+import styles from './BaseView.less';
+
+const FormItem = Form.Item;
+const { Option } = Select;
+const InputGroup = Input.Group;
+const Panel = Collapse.Panel;
+
+
+
+ class AddNewTicketItem extends React.Component{
+
+
+
+    render(){
+        const {
+             getFieldDecorator, getFieldsError, getFieldError, isFieldTouched,
+           } = this.props.form;
+        const formItemLayout = {
+          labelCol: {
+            xs: { span: 16 },
+            sm: { span: 8 },
+          },
+          wrapperCol: {
+            xs: { span: 24 },
+            sm: { span: 16 },
+          },
+        };
+
+        return(
+             <Collapse  defaultActiveKey="1">
+                <Panel header="Basic Info" key="1">
+
+                    <Form  layout="vertical">
+                        <Form.Item
+                            {...formItemLayout}
+                            label="Subject"
+                        >
+                            {getFieldDecorator('subject', {
+                                //initialValue: item.nickName,
+                                rules: [
+                                {required: true,},
+                                ],
+                            })(<Input />)}
+                        </Form.Item>
+                        <Form.Item
+                            {...formItemLayout}
+                            label="Description"
+                        >
+                            {getFieldDecorator('description', {
+                                // initialValue: item.nickName,
+                                rules: [
+                                {required: true,},
+                                ],
+                            })(<Input />)}
+                        </Form.Item>
+                        <Form.Item
+                            {...formItemLayout}
+                            label="Create Date"
+                        >
+                            {getFieldDecorator('date-picker',  { rules: [{ type: 'object', required: false, message: 'Please select time!' }] })(
+                                <DatePicker />
+                            )}
+                        </Form.Item>
+                    </Form>
+                </Panel>
+                <Panel header="Attachment files" key="2">
+                    <h1> hello world!!!</h1>
+                </Panel>
+            </Collapse>
+        );
+    }
+}
+
+export default Form.create()(AddNewTicketItem);

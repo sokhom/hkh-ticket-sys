@@ -23,8 +23,8 @@ import {
 } from 'antd';
 import loadable from 'loadable-components';
 import  {getItem} from'components/List/ItemTaskCompo'
+import AddNewTicketItem from 'components/List/AddNewTicketItem'
 import TicketItemView from 'components/List/TicketItemView'
-
 import styles from './TabPanel.less';
 const TabPane = Tabs.TabPane;
 const FormItem = Form.Item;
@@ -175,21 +175,32 @@ class CreateNewTask extends React.Component {
             }
         });
     }
+
     handleOk = () => {
-        this.setState({ visible: false });
-//        console.log('visible',this.state);
+        const { form: { validateFields },form } = this.formRef.props;
+        validateFields((err, values) => {
+            if (!err) {
+                form.resetFields();
+                this.setState({ visible: false});
+            }
+        });
     }
 
     handleCancel = () =>{
-        this.setState({ visible: false });
-//        console.log('visible',this.state);
+        this.setState({ visible: false});
     }
+
+    saveFormRef = (formRef) => {
+        this.formRef = formRef;
+        console.log('formRef',formRef);
+    }
+
 
     render() {
         const { form } = this.props;
         const { visible, loading,itemType } = this.state;
 
-//        console.log('visible',visible);
+        console.log('AddNewTicketItem form ',form);
         const options = [{
             value: 'zhejiang',
             label: 'Zhejiang',
@@ -219,14 +230,17 @@ class CreateNewTask extends React.Component {
         }];
 
         return (
+
+
             <div>
                 <ModalNewTask
-                    title = {itemType}
+                    title = {'Create Item: ('+ itemType +')'}
                     visible={visible}
                     handleOk={this.handleOk}
                     handleCancel={this.handleCancel}
+
                 >
-                    <TicketItemView />
+                    <AddNewTicketItem  wrappedComponentRef={this.saveFormRef} />
                 </ModalNewTask>
 
                 <Form layout="inline" className={styles.panelRight}>
@@ -248,6 +262,8 @@ class CreateNewTask extends React.Component {
                                 onChange={this.onChange.bind(this)}
                                 placeholder="itemType"
                                 showSearch={{filter:this.filter}}
+
+
                             />
                         )}
                     </FormItem>
@@ -265,26 +281,40 @@ export const NewTask = Form.create()(CreateNewTask);
 
 
 class ModalNewTask extends React.Component {
-  render() {
-    const { title,visible,handleOk,handleCancel,children} = this.props;
 
-    return (
-      <div>
-        <Modal
-          visible={visible}
-          title={title}
-          onOk={handleOk}
-          onCancel={handleCancel}
-          footer={[
-            <Button key="back" onClick={handleCancel}>Cancel</Button>,
-            <Button key="submit" type="primary" onClick={handleOk}>Create</Button>
-          ]}
-        >
-          {children}
-        </Modal>
-      </div>
-    );
-  }
+    handleOkButton = (callback) => {
+//        const {form:{validateFields},form} = this.props;
+//        validateFields((err, values) => {
+//            console.log('ModalNewTask form.validateFields ',form);
+//            if (err) {
+//                return;
+//            }
+//            callback();
+//        });
+
+          callback();
+    }
+
+    render() {
+        const { title,visible,handleOk,handleCancel,children} = this.props;
+        return (
+          <div>
+            <Modal
+              visible={visible}
+              title={title}
+              onOk={handleOk}
+              maskClosable= {false}
+              onCancel={handleCancel}
+              footer={[
+                <Button key="back" onClick={handleCancel}>Cancel</Button>,
+                    <Button key="submit" type="primary" onClick={()=> this.handleOkButton(handleOk)}>Create</Button>
+              ]}
+            >
+              {children}
+            </Modal>
+          </div>
+        );
+    }
 
 }
 

@@ -73,7 +73,7 @@ function callback(key) {
                     </Form>
                 </Panel>
                 <Panel header="Items" key="2">
-                    <h1> hell</h1>
+                    <h1> hello world!!!</h1>
                 </Panel>
             </Collapse>
         );
