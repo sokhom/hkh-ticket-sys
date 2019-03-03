@@ -15,12 +15,14 @@ import {
   Collapse,
   Cascader
 } from 'antd';
+import moment from 'moment';
 import styles from './BaseView.less';
 
 const FormItem = Form.Item;
 const { Option } = Select;
 const InputGroup = Input.Group;
 const Panel = Collapse.Panel;
+const dateFormat = 'YYYY/MM/DD';
 
 
 
@@ -55,7 +57,7 @@ const Panel = Collapse.Panel;
                             {getFieldDecorator('subject', {
                                 //initialValue: item.nickName,
                                 rules: [
-                                {required: true,},
+                                    {required: true,},
                                 ],
                             })(<Input />)}
                         </Form.Item>
@@ -66,16 +68,19 @@ const Panel = Collapse.Panel;
                             {getFieldDecorator('description', {
                                 // initialValue: item.nickName,
                                 rules: [
-                                {required: true,},
+                                    {required: true,},
                                 ],
                             })(<Input />)}
                         </Form.Item>
                         <Form.Item
                             {...formItemLayout}
-                            label="Create Date"
+                            label="Due Date"
                         >
-                            {getFieldDecorator('date-picker',  { rules: [{ type: 'object', required: false, message: 'Please select time!' }] })(
-                                <DatePicker />
+                            {getFieldDecorator('dueDate',  {
+                                initialValue: moment(new Date(), this.dateFormat),
+                                rules: [{ type: 'object', required: false, message: 'Please select due date!' }]
+                                })(
+                                <DatePicker  />
                             )}
                         </Form.Item>
                     </Form>

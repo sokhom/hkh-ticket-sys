@@ -25,6 +25,7 @@ import loadable from 'loadable-components';
 import  {getItem} from'components/List/ItemTaskCompo'
 import AddNewTicketItem from 'components/List/AddNewTicketItem'
 import TicketItemView from 'components/List/TicketItemView'
+import NewTask from 'components/Task/NewTask'
 import styles from './TabPanel.less';
 const TabPane = Tabs.TabPane;
 const FormItem = Form.Item;
@@ -103,12 +104,12 @@ export default(store,children:Props ) => {
             return (
                 <div>
                     <Row type="flex" justify="end">
-                        <Col md={8} sm={24} >
-                            <NewTask/>
+                        <Col md={16} sm={24} >
+                            <NewTaskPane/>
                         </Col>
                     </Row>
                     <Row ype="flex" justify="space-between">
-                        <Col md={24} sm={8}>
+                        <Col md={24} sm={16}>
                             <Tabs
                                 hideAdd
                                 onChange={this.onChange}
@@ -227,21 +228,29 @@ class CreateNewTask extends React.Component {
                     label: 'Zhong Hua men',
                 }],
             }],
-        }];
+            }, {
+                     value: 'ticket',
+                     label: 'Ticket',
+                     children: [{
+                         value: 'a',
+                         label: 'A',
+                         children: [{
+                             value: 'a0',
+                             label: 'A-0000001',
+                         }],
+                     }],
+                 }];
 
         return (
-
-
             <div>
-                <ModalNewTask
+                <NewTask
                     title = {'Create Item: ('+ itemType +')'}
                     visible={visible}
                     handleOk={this.handleOk}
                     handleCancel={this.handleCancel}
-
                 >
                     <AddNewTicketItem  wrappedComponentRef={this.saveFormRef} />
-                </ModalNewTask>
+                </NewTask>
 
                 <Form layout="inline" className={styles.panelRight}>
                     <FormItem label="" >
@@ -277,45 +286,26 @@ class CreateNewTask extends React.Component {
         );
     }
 }
-export const NewTask = Form.create()(CreateNewTask);
+export const NewTaskPane = Form.create()(CreateNewTask);
 
 
-class ModalNewTask extends React.Component {
-
-    handleOkButton = (callback) => {
-//        const {form:{validateFields},form} = this.props;
-//        validateFields((err, values) => {
-//            console.log('ModalNewTask form.validateFields ',form);
-//            if (err) {
-//                return;
-//            }
-//            callback();
-//        });
-
-          callback();
-    }
-
-    render() {
-        const { title,visible,handleOk,handleCancel,children} = this.props;
-        return (
-          <div>
-            <Modal
-              visible={visible}
-              title={title}
-              onOk={handleOk}
-              maskClosable= {false}
-              onCancel={handleCancel}
-              footer={[
-                <Button key="back" onClick={handleCancel}>Cancel</Button>,
-                    <Button key="submit" type="primary" onClick={()=> this.handleOkButton(handleOk)}>Create</Button>
-              ]}
-            >
-              {children}
-            </Modal>
-          </div>
-        );
-    }
-
-}
+//class ModalNewTask extends React.Component {
+//    render() {
+//        const { title,visible,handleOk,handleCancel,children} = this.props;
+//        return (
+//          <div>
+//            <BasicModal
+//              visible={visible}
+//              title={title}
+//              handleOk={handleOk}
+//              handleCancel={handleCancel}
+//            >
+//              {children}
+//            </BasicModal>
+//          </div>
+//        );
+//    }
+//
+//}
 
 
