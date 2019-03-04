@@ -21,7 +21,7 @@ class Task extends React.PureComponent{
 
         return(
          <div>
-            <h1> {this.props.item.title} </h1>
+            <h4> {this.props.item.title} </h4>
             <Item item={item} onNewTabItem={this.props.onNewTabItem}/>
          </div>
         );

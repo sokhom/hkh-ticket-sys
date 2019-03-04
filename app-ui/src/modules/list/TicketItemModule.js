@@ -8,11 +8,11 @@ export const initialState = {
 export const modelPath: string = 'tasks.ticketItem';
 export const ticketDone = createAction('TICKET_DONE');
 export const ticketDone1 = createAction('TICKET_DONE1');
+export const createNewTicket = createAction('CREATE_NEW_TICKET');
 
 
 export default handleActions({
         [ticketDone1]: (state,action) =>{
-//            console.log('ticketDone',state);
             return {...state, type: action.payload.type};
         }
 

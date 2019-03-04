@@ -12,7 +12,7 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch => ({
   ticketDone: (item) => {
-       console.log('mapDispatchToProps-ticketDone',item);
+//       console.log('mapDispatchToProps-ticketDone',item);
 //       dispatch(ticketDone(item))
        dispatch(ticketDone(item));
   }

@@ -73,7 +73,7 @@ export default(store) => {
            //            unenquireScreen(this.enquireHandler);
                }
                getPageTitle() {
-                   return "ant-d";
+                   return "Ticket System";
                }
 
                handleMenuCollapse = collapsed => {
