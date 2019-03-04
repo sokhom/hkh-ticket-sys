@@ -15,6 +15,7 @@ import {
   Collapse,
   Cascader
 } from 'antd';
+import CreateNewTicket from 'components/Task/Ticket/CreateNewTicket'
 import styles from './BaseView.less';
 
 const FormItem = Form.Item;
@@ -29,53 +30,16 @@ function callback(key) {
 
  class TicketItemView extends React.Component{
 
+ saveFormRef = (formRef) => {
+         this.formRef = formRef;
+     }
+
     render(){
-        const {
-             getFieldDecorator, getFieldsError, getFieldError, isFieldTouched,
-           } = this.props.form;
-        const formItemLayout = {
-          labelCol: {
-            xs: { span: 16 },
-            sm: { span: 8 },
-          },
-          wrapperCol: {
-            xs: { span: 16 },
-            sm: { span: 8 },
-          },
-        };
 
         return(
-             <Collapse onChange={callback} defaultActiveKey="1">
-                <Panel header="Requester" key="1">
-                    <Form  layout="vertical">
-                        <Form.Item
-                            {...formItemLayout}
-                            label="E-mail"
-                        >
-                            {getFieldDecorator('email', {
-                                rules: [{
-                                    type: 'email', message: 'The input is not valid E-mail!',
-                                }, {
-                                    required: true, message: 'Please input your E-mail!',
-                                }],
-                            })(
-                                <Input />
-                            )}
-                        </Form.Item>
-                        <Form.Item
-                            {...formItemLayout}
-                            label="DatePicker"
-                        >
-                            {getFieldDecorator('date-picker',  { rules: [{ type: 'object', required: true, message: 'Please select time!' }] })(
-                                <DatePicker />
-                            )}
-                        </Form.Item>
-                    </Form>
-                </Panel>
-                <Panel header="Items" key="2">
-                    <h1> hello world!!!</h1>
-                </Panel>
-            </Collapse>
+        <div>
+             < CreateNewTicket wrappedComponentRef={this.saveFormRef}/>
+        </div>
         );
     }
 }
