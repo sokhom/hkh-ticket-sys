@@ -30,7 +30,7 @@ export default handleActions({
         const index = data.length > 0 ?   data.length + 1 : 1   ;
         const {subject,description,type='ticket',dueDate} = action.payload
 
-        console.log('add new task:',index);
+//        console.log('add new task:',index);
 
         const newTask= {id:index,title:subject,desc:description,type:'ticket'};
         return {data:[...state.data,newTask] }

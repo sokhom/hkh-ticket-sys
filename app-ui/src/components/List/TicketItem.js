@@ -1,6 +1,7 @@
 import Item from './Item';
 import { List,Menu, Dropdown, Button, Icon, message ,Modal,Form,Input} from 'antd';
 import {RequireMessageFormModal} from './RequireMessageFormModal';
+import TicketItemViewContainer from 'containers/Task/Ticket/TicketItemViewContainer';
 
 export default class TicketItem extends Item{
 
@@ -42,7 +43,8 @@ export default class TicketItem extends Item{
                 this.showModal(this.props.item);
                 break;
             case 'open_ticket' :
-                this.props.onNewTabItem(this.props.item);
+                this.props.viewTicket(this.props.item);
+//              this.props.onNewTabItem(this.props.item,<TicketItemViewContainer />);
                 break;
             default :
                 console.log('handle not match.');
@@ -52,7 +54,7 @@ export default class TicketItem extends Item{
 
     //@@override
     menuDrop(){
-        var {type}= this.props.item;
+        var { type } = this.props.item;
         return (
           <Menu onClick={this.handleDropDownMenu}>
             <Menu.Item key= 'open_ticket' ><Icon type="user" /> Open Ticket</Menu.Item>
@@ -64,6 +66,7 @@ export default class TicketItem extends Item{
 
     //@@override
     renderUI(){
+
         return(
             <div>
                  <p> {this.props.item.desc}</p>

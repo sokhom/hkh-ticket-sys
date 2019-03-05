@@ -23,12 +23,10 @@ import {
 } from 'antd';
 import loadable from 'loadable-components';
 import  {getItem} from'components/List/ItemTaskCompo'
-import TicketItemView from 'components/List/TicketItemView'
+//import TicketItemViewContainer from 'containers/Task/Ticket/TicketItemViewContainer';
 import NewTask from 'components/Task/NewTask'
 import styles from './TabPanel.less';
 const TabPane = Tabs.TabPane;
-
-
 
 type Props = {
   children: Node,
@@ -75,7 +73,7 @@ export default(store,children:Props ) => {
             this.setState({ panes, activeKey });
         }
 
-        onNewTabItem=(itemData)=>{
+        onNewTabItem=(itemData,itemComponent)=>{
             const panes = this.state.panes;
             const tabIndex = itemData.id;
             const activeKey = `newTab${tabIndex}`;
@@ -85,16 +83,15 @@ export default(store,children:Props ) => {
                     isPane = true;
                 }
             });
-
             if(isPane){
                 this.setState({ panes, activeKey });
             }else{
-//              const  Item = getItem('ticketView'); //loadable(() => import('containers/list/TicketItemContainer'));
+//              const  Item = getItem('ticketView');
+//              const TicketItemViewContainer = loadable(() => import('containers/Task/Ticket/TicketItemViewContainer'));
 //              panes.push({ id:itemData.id,title: itemData.title, content: <Item item={itemData}/>, key: activeKey });
                 this.setState({ panes, activeKey });
-                panes.push({ id:itemData.id,title: itemData.title, content: <TicketItemView />, key: activeKey });
+                panes.push({ id:itemData.id,title: itemData.title, content: itemComponent, key: activeKey });
             }
-
         }
 
         render() {

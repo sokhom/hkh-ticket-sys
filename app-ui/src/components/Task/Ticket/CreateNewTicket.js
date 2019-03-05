@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import { formatMessage, FormattedMessage } from 'umi/locale';
 import {
   Card,
   Button,
@@ -23,11 +22,7 @@ const InputGroup = Input.Group;
 const Panel = Collapse.Panel;
 const dateFormat = 'YYYY/MM/DD';
 
-
-
  class CreateNewTicket extends React.Component{
-
-
 
     render(){
         const {

@@ -30,16 +30,16 @@ function callback(key) {
 
  class TicketItemView extends React.Component{
 
- saveFormRef = (formRef) => {
-         this.formRef = formRef;
-     }
+    saveFormRef = (formRef) => {
+        this.formRef = formRef;
+    }
 
     render(){
-
+//        console.log('TicketItemView-> props: ',this.props);
         return(
-        <div>
-             < CreateNewTicket wrappedComponentRef={this.saveFormRef}/>
-        </div>
+            <div>
+            < CreateNewTicket wrappedComponentRef={this.saveFormRef} {...this.props}/>
+            </div>
         );
     }
 }

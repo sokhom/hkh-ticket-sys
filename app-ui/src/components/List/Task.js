@@ -4,7 +4,7 @@ import loadable from 'loadable-components';
 import {getItem} from './ItemTaskCompo';
 import { injectReducer } from 'store/reducers';
 import { injectSaga } from 'store/sagas';
-import reducer  from 'modules/list/TicketItemModule'
+//import reducer  from 'modules/list/TicketItemModule'
 
 class Task extends React.PureComponent{
 
@@ -13,8 +13,7 @@ class Task extends React.PureComponent{
     }
 
     render(){
-         injectReducer(this.props.store, { key: 'ticketItem', reducer });
-
+        // injectReducer(this.props.store, { key: 'ticketItem', reducer });
         const item = this.props.item;
         const {type} = item;
         const  Item = loadable(() => import('containers/list/TicketItemContainer'));
