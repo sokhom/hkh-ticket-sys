@@ -3,8 +3,7 @@ import { combineReducers } from 'redux';
 import { createAction, handleActions } from 'redux-actions';
 import { formReducer, modelReducer } from 'react-redux-form';
 export const initialState = {
-        isPadding: false,
-        item: {}
+        isPadding: false
 };
 export const modelPath: string = 'tasks.ticketItem';
 export const ticketDone = createAction('TICKET_DONE');
@@ -19,7 +18,7 @@ export default handleActions({
 //            return {...state, type: action.payload.type};
 //        },
         [updateTicket]: (state,action)=>{
-//            console.log(state,action.payload);
+            console.log(state,action.payload);
             return {...state,item: action.payload}
         }
 

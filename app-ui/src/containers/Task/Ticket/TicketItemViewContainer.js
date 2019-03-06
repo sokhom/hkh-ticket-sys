@@ -5,12 +5,7 @@ import TicketItemView from 'components/List/TicketItemView'
 const mapStateToProps = state =>{
     console.log('mapStateToProps-TicketItemView',state);
     return ({
-        item:{
-            subject: 'Ticket-00012',
-            title: 'tere',
-            description: '',
-            dueDate: new Date()
-        }
+        item: state.ticketItem.item
     })
 } ;
 

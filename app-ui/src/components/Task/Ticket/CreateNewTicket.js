@@ -50,7 +50,7 @@ const dateFormat = 'YYYY/MM/DD';
                             label="Subject"
                         >
                             {getFieldDecorator('subject', {
-                                initialValue: item.subject,
+                                initialValue: item.title,
                                 rules: [
                                     {required: true,},
                                 ],
@@ -61,7 +61,7 @@ const dateFormat = 'YYYY/MM/DD';
                             label="Description"
                         >
                             {getFieldDecorator('description', {
-                                 initialValue: item.description,
+                                 initialValue: item.desc,
                                 rules: [
                                     {required: true,},
                                 ],
