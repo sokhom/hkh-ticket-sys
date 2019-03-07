@@ -8,12 +8,12 @@ const mapStateToProps = state =>{
     return ({
       data: state.tasks.data
     })
-} ;
+};
 
 const mapDispatchToProps = dispatch => ({
   openTask: (task) => {
 //       console.log('mapDispatchToProps-openTask',ticketDone);
-       dispatch(openTask(task))
+       dispatch(openTask(task));
   }
 });
 

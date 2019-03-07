@@ -91,11 +91,11 @@ export default(store,children:Props ) => {
 //              panes.push({ id:itemData.id,title: itemData.title, content: <Item item={itemData}/>, key: activeKey });
                 this.setState({ panes, activeKey });
                 panes.push({ id:itemData.id,title: itemData.title, content: itemComponent, key: activeKey });
+
             }
         }
 
         render() {
-
             const   TaskListContainer = loadable(() => import('containers/list/TaskListContainer').then(bandle => bandle.default(store)));
             return (
                 <div>

@@ -10,7 +10,7 @@ const mapStateToProps = state =>{
 } ;
 
 const mapDispatchToProps = dispatch => ({
-    createNewTicket: (item) => {
+    openTicket: (item) => {
         //  console.log('mapDispatchToProps-CreateNewTicket',item);
         //  dispatch(ticketDone(item))
         dispatch(createNewTicket(item));

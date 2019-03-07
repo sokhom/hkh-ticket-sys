@@ -21,5 +21,4 @@ export default handleActions({
             console.log(state,action.payload);
             return {...state,item: action.payload}
         }
-
     }, initialState);

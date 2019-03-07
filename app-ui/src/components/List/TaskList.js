@@ -5,7 +5,6 @@ import Task from './Task';
 export default(store) => {
     return class TaskList extends React.PureComponent {
         render(){
-
             return(
                 <div>
                     <List

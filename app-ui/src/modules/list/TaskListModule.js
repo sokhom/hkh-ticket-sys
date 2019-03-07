@@ -9,7 +9,8 @@ export const initialState = {
 //    {id:3,title:'Australian walks',desc:'Australian walks 100km after outback crash.',type:'ticket'},
 //    {id:4,title:'Man charged',desc:'Man charged over missing wedding girl.',type:'ticket'},
 //    {id:5,title:'Los Angeles battles',desc:'Los Angeles battles huge wildfires.',type:'ticket1'}
-  ]
+  ],
+  itemTabs: []
 };
 
 export const openTask = createAction('OPEN_TASK');

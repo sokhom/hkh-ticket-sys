@@ -12,6 +12,11 @@ class Task extends React.PureComponent{
         super(props);
     }
 
+    openItemDetail = (itemDetail) => {
+//        this.props.viewTicket();
+        return  this.props.onNewTabItem(this.props.item,itemDetail);
+    }
+
     render(){
         // injectReducer(this.props.store, { key: 'ticketItem', reducer });
         const item = this.props.item;
@@ -21,7 +26,7 @@ class Task extends React.PureComponent{
         return(
          <div>
             <h4> {this.props.item.title} </h4>
-            <Item item={item} onNewTabItem={this.props.onNewTabItem}/>
+            <Item item={item} openItemDetail={this.openItemDetail}/>
          </div>
         );
     }

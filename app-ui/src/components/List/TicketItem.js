@@ -19,7 +19,7 @@ export default class TicketItem extends Item{
             if (err) {
                 return;
             }
-//            console.log('Received values of form: ', values);
+//          console.log('Received values of form: ', values);
             this.props.ticketDone({...this.props.item,desc:values.desc});
             form.resetFields();
             this.setState({ visible: false });
@@ -43,8 +43,8 @@ export default class TicketItem extends Item{
                 this.showModal(this.props.item);
                 break;
             case 'open_ticket' :
-              this.props.viewTicket(this.props.item);
-              this.props.onNewTabItem(this.props.item,<TicketItemViewContainer />);
+//              this.props.viewTicket(this.props.item);
+                this.props.openItemDetail(<TicketItemViewContainer />);
                 break;
             default :
                 console.log('handle not match.');
