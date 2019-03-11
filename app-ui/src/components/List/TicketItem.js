@@ -43,7 +43,7 @@ export default class TicketItem extends Item{
                 this.showModal(this.props.item);
                 break;
             case 'open_ticket' :
-//              this.props.viewTicket(this.props.item);
+              this.props.viewTicket(this.props.item);
                 this.props.openItemDetail(<TicketItemViewContainer />);
                 break;
             default :

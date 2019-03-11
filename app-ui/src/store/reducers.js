@@ -9,6 +9,7 @@ import userReducer from 'modules/UserModule';
 import globalReducer from 'modules/GlobalModule';
 import taskListReducer from 'modules/list/TaskListModule';
 import ticketItemReducer from 'modules/list/TicketItemModule';
+import tabReducer from 'modules/Tab/TabModule';
 
 // https://github.com/zalmoxisus/redux-devtools-instrument/pull/19#issuecomment-400637274
 // https://github.com/reduxjs/redux/issues/2943
@@ -28,6 +29,7 @@ export const makeRootReducer = (asyncReducers) => {
     global:globalReducer,
     tasks: taskListReducer,
     ticketItem: ticketItemReducer,
+    tab: tabReducer,
     ...asyncReducers,
   });
 

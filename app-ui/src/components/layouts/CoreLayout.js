@@ -12,7 +12,9 @@ import { getMenuData } from '../../common/menu';
 import MenuContainer from '../../containers/Sider/MenuContainer';
 import { Switch, Route,Redirect,BrowserRouter as Router } from 'react-router-dom';
 import AuthenticatedContainer from '../../containers/Header/AuthenticatedContainer';
-import TabPanel from 'components/common/TabPanel';
+//import TabPanel from 'components/common/TabPanel';
+
+import TabContainer from 'containers/Tab/TabContainer';
 
 
 const { Content, Header, Footer } = Layout;
@@ -85,7 +87,7 @@ export default(store) => {
                    };
 
                render() {
-                   const TabPane =TabPanel(store);
+                   const TabPane =TabContainer(store);
 
                    const {
                                currentUser,

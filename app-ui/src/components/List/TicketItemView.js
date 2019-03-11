@@ -23,9 +23,6 @@ const { Option } = Select;
 const InputGroup = Input.Group;
 const Panel = Collapse.Panel;
 
-function callback(key) {
-  console.log(key);
-}
 
 
  class TicketItemView extends React.Component{
