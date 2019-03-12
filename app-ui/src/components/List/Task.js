@@ -12,8 +12,8 @@ class Task extends React.PureComponent{
         super(props);
     }
 
-    openItemDetail = (itemDetail) => {
-//        this.props.viewTicket();
+    openItemDetail = (itemDetail,initData) => {
+        initData(this.props.item);
         return  this.props.onNewTabItem(this.props.item,itemDetail);
     }
 

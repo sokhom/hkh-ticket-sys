@@ -43,8 +43,8 @@ export default class TicketItem extends Item{
                 this.showModal(this.props.item);
                 break;
             case 'open_ticket' :
-              this.props.viewTicket(this.props.item);
-                this.props.openItemDetail(<TicketItemViewContainer />);
+//                this.props.viewTicket(this.props.item);
+                this.props.openItemDetail(<TicketItemViewContainer />, this.props.viewTicket);
                 break;
             default :
                 console.log('handle not match.');
@@ -67,7 +67,6 @@ export default class TicketItem extends Item{
 
     //@@override
     renderUI(){
-
         return(
             <div>
                  <p> {this.props.item.desc}</p>

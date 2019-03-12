@@ -12,11 +12,12 @@ export const initialState = {
 export const openItemTab = createAction('OPEN_ITEM_TAB');
 export const removeItemTab = createAction('REMOVE_ITEM_TAB');
 export const onClickItemTab = createAction('ON_CLICK_ITEM_TAB');
+export const loadItemFromLocal = createAction('LOAD_ITEM_FROM_LOCAL');
 
 
 export default handleActions({
         [openItemTab]: (state,action)=>{
-            console.log('openItemTab',action.payload);
+//            console.log('openItemTab',action.payload);
             const {itemData,content} = action.payload
             const tabIndex = itemData.id;
             const activeKey = `newTab${tabIndex}`;
@@ -29,12 +30,11 @@ export default handleActions({
             if(isPane){
                  return {...state,activeKey:activeKey}
             }else{
-                 return {...state,itemTabs:[...state.itemTabs,{ id:itemData.id,title: itemData.title, content: content, key: activeKey }]}
+                 return {...state,activeKey:activeKey,itemTabs:[...state.itemTabs,{ id:itemData.id,title: itemData.title, content: content, key: activeKey }]}
             }
         },
         [onClickItemTab]: (state,action) =>{
-
-                 console.log('tab.activeKey onClickItemTab:',action.payload     );
+             console.log('tab.activeKey onClickItemTab:',action.payload     );
              const {activeKey} = action.payload
              return {...state,activeKey:activeKey}
         },
@@ -59,5 +59,9 @@ export default handleActions({
                 }
             }
             return {...state,itemTabs:panes,activeKey:activeKey}
+        },
+        [loadItemFromLocal]:(state,action)=>{
+            console.log('loadItemFromLocal',state);
+            return {...state}
         }
     }, initialState);
