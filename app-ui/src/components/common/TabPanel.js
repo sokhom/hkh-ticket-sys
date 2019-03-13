@@ -99,7 +99,7 @@ export default(store,children:Props ) => {
         }
 
         render() {
-            console.log(this.props);
+            console.log('TabPanel props:',this.props);
             const   TaskListContainer = loadable(() => import('containers/list/TaskListContainer').then(bandle => bandle.default(store)));
             return (
                 <div>

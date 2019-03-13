@@ -6,7 +6,8 @@ import { formReducer, modelReducer } from 'react-redux-form';
 export const initialState = {
         isPending: false,
         activeKey: 'newTab0',
-        itemTabs: []
+        data: [],
+        currentTab:{}
 };
 
 export const openItemTab = createAction('OPEN_ITEM_TAB');
@@ -22,7 +23,7 @@ export default handleActions({
             const tabIndex = itemData.id;
             const activeKey = `newTab${tabIndex}`;
             let isPane = false;
-            state.itemTabs.forEach((pane, i) => {
+            state.data.forEach((pane, i) => {
                 if (pane.id === tabIndex) {
                     isPane = true;
                 }
@@ -30,25 +31,31 @@ export default handleActions({
             if(isPane){
                  return {...state,activeKey:activeKey}
             }else{
-                 return {...state,activeKey:activeKey,itemTabs:[...state.itemTabs,{ id:itemData.id,title: itemData.title, content: content, key: activeKey }]}
+                 return {...state,activeKey:activeKey,data:[...state.data,{ id:itemData.id,title: itemData.title, content: content, key: activeKey }]}
             }
         },
         [onClickItemTab]: (state,action) =>{
-             console.log('tab.activeKey onClickItemTab:',action.payload     );
-             const {activeKey} = action.payload
-             return {...state,activeKey:activeKey}
+//             console.log('tab.activeKey onClickItemTab:',action.payload     );
+            const {activeKey} = action.payload
+            let currentTab ={};
+            state.data.forEach((pane, i) => {
+                 if (pane.key === activeKey) {
+                     currentTab = pane;
+                 }
+            });
+            return {...state,currentTab:currentTab,activeKey:activeKey}
         },
         [removeItemTab]:(state,action) =>{
              const {targetKey} = action.payload;
             let activeKey = state.activeKey;
             let lastIndex;
-            state.itemTabs.forEach((pane, i) => {
+            state.data.forEach((pane, i) => {
                 if (pane.key === targetKey) {
                     lastIndex = i-1 ;
                 }
             });
 
-            const panes = state.itemTabs.filter(pane => pane.key !== targetKey);
+            const panes = state.data.filter(pane => pane.key !== targetKey);
             if (lastIndex >= 0 && activeKey === targetKey ) {
                 activeKey = panes[lastIndex].key;
             }else if(activeKey === targetKey){
@@ -58,7 +65,7 @@ export default handleActions({
                     activeKey='newTab0';
                 }
             }
-            return {...state,itemTabs:panes,activeKey:activeKey}
+            return {...state,data:panes,activeKey:activeKey}
         },
         [loadItemFromLocal]:(state,action)=>{
             console.log('loadItemFromLocal',state);

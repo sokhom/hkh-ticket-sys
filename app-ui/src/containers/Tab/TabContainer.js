@@ -3,11 +3,12 @@ import { openItemTab,onClickItemTab,removeItemTab } from 'modules/Tab/TabModule'
 import TabPanel from 'components/common/TabPanel'
 
 const mapStateToProps = state =>{
-//    console.log('mapStateToProps', state);
+//    console.log('TabContainer: ', state);
 //    console.log('mapStateToProps11', state);
     return ({
-      itemTabs: state.tab.itemTabs,
-      activeKey: state.tab.activeKey
+      itemTabs: state.tabs.tabItems.data,
+      activeKey: state.tabs.tabItems.activeKey,
+      currentTab: state.tabs.tabItems.currentTab
     })
 };
 
