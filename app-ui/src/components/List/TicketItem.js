@@ -43,8 +43,8 @@ export default class TicketItem extends Item{
                 this.showModal(this.props.item);
                 break;
             case 'open_ticket' :
-//                this.props.viewTicket(this.props.item);
-                this.props.openItemDetail(<TicketItemViewContainer />, this.props.viewTicket);
+//              this.props.viewTicket(this.props.item);
+                this.props.openItemDetail(<TicketItemViewContainer item={this.props.item}/>, this.props.viewTicket);
                 break;
             default :
                 console.log('handle not match.');
@@ -54,8 +54,8 @@ export default class TicketItem extends Item{
 
     //@@override
     menuDrop(){
-        var { type } = this.props.item;
-//        console.log('TicketItem props:',this.props);
+        var { type,actions } = this.props.item;
+        console.log('TicketItem props:',this.props);
         return (
           <Menu onClick={this.handleDropDownMenu}>
             <Menu.Item key= 'open_ticket' ><Icon type="user" /> Open Ticket</Menu.Item>

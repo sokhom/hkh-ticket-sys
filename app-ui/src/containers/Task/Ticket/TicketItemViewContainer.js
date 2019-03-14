@@ -3,9 +3,9 @@ import { createNewTicket } from 'modules/list/TicketItemModule';
 import TicketItemView from 'components/List/TicketItemView'
 
 const mapStateToProps = state =>{
-    console.log('mapStateToProps-TicketItemView',state);
+//    console.log('mapStateToProps-TicketItemView',state);
     return ({
-        item: state.ticketItem.item
+        item1: state.ticketItem.item
     })
 } ;
 

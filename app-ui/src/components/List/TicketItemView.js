@@ -32,10 +32,10 @@ const Panel = Collapse.Panel;
     }
 
     render(){
-//        console.log('TicketItemView-> props: ',this.props);
+        console.log('TicketItemView-> props: ',this.props);
         return(
             <div>
-            < CreateNewTicket wrappedComponentRef={this.saveFormRef} {...this.props}/>
+            < CreateNewTicket wrappedComponentRef={this.saveFormRef} item={this.props.item}/>
             </div>
         );
     }

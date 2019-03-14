@@ -31,7 +31,7 @@ export default handleActions({
             if(isPane){
                  return {...state,activeKey:activeKey}
             }else{
-                 return {...state,activeKey:activeKey,data:[...state.data,{ id:itemData.id,title: itemData.title, content: content, key: activeKey }]}
+                 return {...state,activeKey:activeKey,data:[...state.data,{ id:itemData.id,title: itemData.title, content: content, key: activeKey,itemDetail:itemData }]}
             }
         },
         [onClickItemTab]: (state,action) =>{
