@@ -12,7 +12,9 @@ import {
   Select,
   Popover,
   Collapse,
-  Cascader
+  Cascader,
+
+
 } from 'antd';
 import moment from 'moment';
 
@@ -21,6 +23,7 @@ const { Option } = Select;
 const InputGroup = Input.Group;
 const Panel = Collapse.Panel;
 const dateFormat = 'YYYY/MM/DD';
+
 
  class CreateNewTicket extends React.Component{
 
@@ -41,6 +44,7 @@ const dateFormat = 'YYYY/MM/DD';
         };
 
         return(
+
              <Collapse  defaultActiveKey="1">
                 <Panel header="Basic Info" key="1">
 
@@ -84,6 +88,7 @@ const dateFormat = 'YYYY/MM/DD';
                     <h1> hello world!!!</h1>
                 </Panel>
             </Collapse>
+
         );
     }
 }

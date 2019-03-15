@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { createNewTicket } from 'modules/list/TicketItemModule';
+import { createNewTicket,viewTicket,ticketDone } from 'modules/list/TicketItemModule';
 import TicketItemView from 'components/List/TicketItemView'
 
 const mapStateToProps = state =>{
@@ -10,10 +10,13 @@ const mapStateToProps = state =>{
 } ;
 
 const mapDispatchToProps = dispatch => ({
-    openTicket: (item) => {
-//          console.log('mapDispatchToProps-CreateNewTicket',item);
-        //  dispatch(ticketDone(item))
-        dispatch(createNewTicket(item));
+//    openTicket: (item) => {
+////          console.log('mapDispatchToProps-CreateNewTicket',item);
+//        //  dispatch(ticketDone(item))
+//        dispatch(createNewTicket(item));
+//    }
+ticketDone: (item) => {
+        dispatch(ticketDone(item));
     }
 });
 
