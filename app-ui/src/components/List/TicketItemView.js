@@ -42,8 +42,6 @@ class TicketItemView extends React.Component{
         this.formRef = formRef;
     }
 
-
-
     handleDropDownMenu = (e) => {
         const {key} = e;
         switch (key){
@@ -56,18 +54,18 @@ class TicketItemView extends React.Component{
     }
 
     menuDrop(){
-     return (
-       <Menu onClick={this.handleDropDownMenu}>
-         <Menu.Item key="done_ticket"><Icon type="user" />Done</Menu.Item>
-         <Menu.Item key="2"><Icon type="user" />2nd menu item</Menu.Item>
-         <Menu.Item key="3"><Icon type="user" />3rd item</Menu.Item>
-       </Menu>
-     );
-
+        var { actions } = this.props.item;
+        return (
+            <Menu onClick={this.handleDropDownMenu}>
+                {actions.map(act =>
+                    <Menu.Item key= {act.key} ><Icon type="user" /> {act.name}</Menu.Item>
+                )}
+            </Menu>
+        );
     }
 
     render(){
-        console.log('TicketItemView-> props: ',this.props);
+//        console.log('TicketItemView-> props: ',this.props);
         return(
             <Layout
                 className="layout"
@@ -81,7 +79,7 @@ class TicketItemView extends React.Component{
                 </Content>
                 <Footer style={{backgroundColor: '#fafafa',padding: '5px',     margin: '7px 0px 7px 0px' }}>
                     <Dropdown  overlay={this.menuDrop()}>
-                        <Button style={{ marginLeft: 8,float:'right' }}>
+                        <Button type="primary" style={{ marginLeft: 8,float:'right' }}>
                             Actions <Icon type="down" />
                         </Button>
                     </Dropdown>

@@ -18,7 +18,7 @@ export default handleActions({
 //            return {...state, type: action.payload.type};
 //        },
         [updateTicket]: (state,action)=>{
-            console.log('TicketTtemModule:',state);
+//            console.log('TicketTtemModule:',state);
             return {...state,item: action.payload}
         }
     }, initialState);

@@ -2,12 +2,18 @@ import { connect } from 'react-redux';
 import { createNewTicket } from 'modules/list/TicketItemModule';
 import CreateNewTicket from 'components/Task/Ticket/CreateNewTicket'
 
+const actions = [
+    {name:'Done',key:'done_ticket'},
+    {name:'Open Ticket Detail',key:'open_ticket'}
+]
+
+
 const mapStateToProps = state =>{
 //    console.log('mapStateToProps-TicketItemContainer',state);
     return ({
         item:{
-            subject: 'Ticket-00012',
-            description: '',
+            title: 'Ticket-00012',
+            desc: 'Add new ticket',
             dueDate: new Date()
         }
     })
@@ -15,9 +21,7 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch => ({
   createNewTicket: (item) => {
-//       console.log('mapDispatchToProps-CreateNewTicket',item);
-//       dispatch(ticketDone(item))
-       dispatch(createNewTicket(item));
+       dispatch(createNewTicket({...item,actions:actions}));
   }
 });
 

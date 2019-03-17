@@ -24,7 +24,7 @@ class Task extends React.PureComponent{
         const  Item = loadable(() => import('containers/list/TicketItemContainer'));
 
         return(
-         <div>
+         <div style={{width: '100%'}}>
             <h4> {this.props.item.title} </h4>
             <Item item={item} openItemDetail={this.openItemDetail}/>
          </div>
