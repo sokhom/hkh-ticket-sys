@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { createNewTicket } from 'modules/list/TicketItemModule';
-import CreateNewTicket from 'components/Task/Ticket/CreateNewTicket'
+import TicketForm from 'components/Task/Ticket/TicketForm'
 
 const actions = [
     {name:'Done',key:'done_ticket'},
@@ -25,4 +25,4 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateNewTicket);
+export default connect(mapStateToProps, mapDispatchToProps)(TicketForm);

@@ -20,7 +20,8 @@ import {
   Menu,
   Dropdown
 } from 'antd';
-import CreateNewTicket from 'components/Task/Ticket/CreateNewTicket'
+import TicketForm from 'components/Task/Ticket/TicketForm'
+import TicketActionDoneModal from 'components/Task/Ticket/TicketActionDoneModal'
 import styles from './BaseView.less';
 
 const FormItem = Form.Item;
@@ -75,7 +76,8 @@ class TicketItemView extends React.Component{
                 }}
             >
                 <Content>
-                    < CreateNewTicket wrappedComponentRef={this.saveFormRef} item={this.props.item}/>
+                    < TicketForm wrappedComponentRef={this.saveFormRef} item={this.props.item}/>
+                    <TicketActionDoneModal item={{title:'hello'}} />
                 </Content>
                 <Footer style={{backgroundColor: '#fafafa',padding: '5px',     margin: '7px 0px 7px 0px' }}>
                     <Dropdown  overlay={this.menuDrop()}>

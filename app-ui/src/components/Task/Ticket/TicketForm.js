@@ -25,7 +25,7 @@ const Panel = Collapse.Panel;
 const dateFormat = 'YYYY/MM/DD';
 
 
- class CreateNewTicket extends React.Component{
+ class TicketForm extends React.Component{
 
     render(){
         const {
@@ -93,4 +93,4 @@ const dateFormat = 'YYYY/MM/DD';
     }
 }
 
-export default Form.create()(CreateNewTicket);
+export default Form.create()(TicketForm);
