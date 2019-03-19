@@ -1,30 +1,31 @@
 import React, { Component } from 'react';
 import BasicModal from 'components/common/BasicModal';
+import TicketActionDoneForm from 'components/Task/Ticket/TicketActionDoneForm'
 
 
 export default class TicketActionDoneModal extends React.Component{
     state = { visible: false }
 
-    showModal = (item) => {
+    showModal1 = (item) => {
         this.setState({
             visible: true,
         });
     }
 
-    handleCreate = (e) => {
+    handleCreate = () => {
         const form = this.formRef.props.form;
         form.validateFields((err, values) => {
             if (err) {
                 return;
             }
             //          console.log('Received values of form: ', values);
-            this.props.ticketDone({...this.props.item,desc:values.desc});
+//            this.props.ticketDone({...this.props.item,desc:values.desc});
             form.resetFields();
             this.setState({ visible: false });
         });
     }
 
-    handleCancel = (e) => {
+    handleCancel = () => {
         this.setState({
             visible: false,
         });
@@ -34,16 +35,24 @@ export default class TicketActionDoneModal extends React.Component{
         this.formRef = formRef;
     }
 
+    componentWillMount() {
+         const {wrappedComponentRef} = this.props
+         wrappedComponentRef( {showModal:this.showModal1} );
+    }
+
+
     render(){
+
         return(
             <BasicModal
                 title={this.props.item.title}
-//                wrappedComponentRef={this.saveFormRef}
                 visible={this.state.visible}
-                onCancel={this.handleCancel}
-                onCreate={this.handleCreate}
-//                okText ='Done'
-            />
+                handleCancel={this.handleCancel}
+                handleOk={this.handleCreate}
+                okText ='Done'
+            >
+                <TicketActionDoneForm  wrappedComponentRef={this.saveFormRef}/>
+            </BasicModal>
         );
     }
 

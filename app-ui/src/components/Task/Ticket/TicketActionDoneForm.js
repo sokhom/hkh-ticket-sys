@@ -6,7 +6,7 @@ import {
 class TicketActionDoneForm extends React.Component {
     render() {
         const {
-        visible, onCancel, onCreate, form, title,okText
+            form
         } = this.props;
         const { getFieldDecorator } = form;
         return (

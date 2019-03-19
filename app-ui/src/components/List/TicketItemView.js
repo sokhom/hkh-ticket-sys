@@ -47,7 +47,10 @@ class TicketItemView extends React.Component{
         const {key} = e;
         switch (key){
             case 'done_ticket' :
-                this.props.ticketDone({...this.props.item,desc:'edit from view detail from '});
+                const {showModal} = this.formRef1
+//                console.log('wrappedActionD?oneModal ' ,showModal);
+                showModal(this.props.item);
+                //this.props.ticketDone({...this.props.item,desc:'edit from view detail from '});
                 break;
                 console.log('handle not match.');
                 break;
@@ -65,6 +68,11 @@ class TicketItemView extends React.Component{
         );
     }
 
+    wrappedActionDoneModal = (formRef1) => {
+//            console.log('wrappedActionDoneModal11111 ' ,formRef1);
+            this.formRef1 = formRef1;
+    }
+
     render(){
 //        console.log('TicketItemView-> props: ',this.props);
         return(
@@ -77,7 +85,7 @@ class TicketItemView extends React.Component{
             >
                 <Content>
                     < TicketForm wrappedComponentRef={this.saveFormRef} item={this.props.item}/>
-                    <TicketActionDoneModal item={{title:'hello'}} />
+                    <TicketActionDoneModal item={this.props.item} wrappedComponentRef={this.wrappedActionDoneModal} />
                 </Content>
                 <Footer style={{backgroundColor: '#fafafa',padding: '5px',     margin: '7px 0px 7px 0px' }}>
                     <Dropdown  overlay={this.menuDrop()}>
