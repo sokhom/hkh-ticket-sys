@@ -85,7 +85,7 @@ class TicketItemView extends React.Component{
             >
                 <Content>
                     < TicketForm wrappedComponentRef={this.saveFormRef} item={this.props.item}/>
-                    <TicketActionDoneModal item={this.props.item} wrappedComponentRef={this.wrappedActionDoneModal} />
+                    <TicketActionDoneModal item={this.props.item} wrappedComponentRef={this.wrappedActionDoneModal} ticketActionDone={this.props.ticketDone} />
                 </Content>
                 <Footer style={{backgroundColor: '#fafafa',padding: '5px',     margin: '7px 0px 7px 0px' }}>
                     <Dropdown  overlay={this.menuDrop()}>

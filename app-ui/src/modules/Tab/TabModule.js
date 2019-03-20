@@ -6,14 +6,13 @@ import { formReducer, modelReducer } from 'react-redux-form';
 export const initialState = {
         isPending: false,
         activeKey: 'newTab0',
-        data: [],
-        currentTab:{}
+        data: []
 };
 
 export const openItemTab = createAction('OPEN_ITEM_TAB');
 export const removeItemTab = createAction('REMOVE_ITEM_TAB');
 export const onClickItemTab = createAction('ON_CLICK_ITEM_TAB');
-export const loadItemFromLocal = createAction('LOAD_ITEM_FROM_LOCAL');
+//export const loadItemFromLocal = createAction('LOAD_ITEM_FROM_LOCAL');
 
 
 export default handleActions({
@@ -66,9 +65,5 @@ export default handleActions({
                 }
             }
             return {...state,data:panes,activeKey:activeKey}
-        },
-        [loadItemFromLocal]:(state,action)=>{
-            console.log('loadItemFromLocal',state);
-            return {...state}
         }
     }, initialState);

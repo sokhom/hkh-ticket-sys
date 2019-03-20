@@ -28,25 +28,24 @@ export function* newTask(api: UserAPI): Generator<*, *, *> {
 }
 
 
-export function* loadingTicketDetail(api: UserAPI): Generator<*, *, *> {
-    while(true){
-        const {payload} = yield take(viewTicket().type);
-        try{
-//            console.log('viewTicket1',payload);
-            yield put(loadItemFromLocal(payload));
-            yield put(updateTicket(payload));
-        }catch(e){
-            console.log('saga create new task by each item',e);
-        }
-    }
-}
+//export function* loadingTicketDetail(api: UserAPI): Generator<*, *, *> {
+//    while(true){
+//        const {payload} = yield take(viewTicket().type);
+//        try{
+////            console.log('viewTicket1',payload);
+//            yield put(loadItemFromLocal(payload));
+//            yield put(updateTicket(payload));
+//        }catch(e){
+//            console.log('saga create new task by each item',e);
+//        }
+//    }
+//}
 
 
 export function* taskSaga(api: UserAPI): Generator<*, *, *> {
     yield all(combineSagas([
         [taskList,api],
-        [newTask,api],
-        [loadingTicketDetail,api]
+        [newTask,api]
     ]));
 }
 

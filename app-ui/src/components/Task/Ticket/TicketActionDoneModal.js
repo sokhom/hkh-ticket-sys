@@ -19,7 +19,7 @@ export default class TicketActionDoneModal extends React.Component{
                 return;
             }
             //          console.log('Received values of form: ', values);
-//            this.props.ticketDone({...this.props.item,desc:values.desc});
+            this.props.ticketActionDone({...this.props.item,desc:values.desc});
             form.resetFields();
             this.setState({ visible: false });
         });

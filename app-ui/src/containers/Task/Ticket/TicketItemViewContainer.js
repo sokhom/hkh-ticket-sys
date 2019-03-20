@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import { createNewTicket,viewTicket,ticketDone } from 'modules/list/TicketItemModule';
+import {ticketDone } from 'modules/list/TicketItemModule';
 import TicketItemView from 'components/List/TicketItemView'
 
 const mapStateToProps = state =>{
-//    console.log('mapStateToProps-TicketItemView',state);
+    console.log('mapStateToProps-TicketItemView',state);
     return ({
         item1: state.ticketItem.item
     })
