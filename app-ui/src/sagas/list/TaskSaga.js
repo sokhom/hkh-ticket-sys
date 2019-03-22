@@ -3,13 +3,14 @@ import UserAPI from 'apis/UserAPI';
 import { combineSagas, handleError } from 'util/Saga';
 import {updateTaskItem,updateItemInTaskList,addNewTaskItem} from 'modules/list/TaskListModule';
 import {ticketDone,createNewTicket,viewTicket,updateTicket} from 'modules/list/TicketItemModule';
-import {loadItemFromLocal} from 'modules/Tab/TabModule';
+import {ticketActionDone} from 'modules/Tab/TabModule';
 
 export function* taskList(api: UserAPI): Generator<*, *, *> {
      while(true){
          const {payload} = yield take(ticketDone().type);
          try{
              yield put(updateItemInTaskList(payload));
+             yield put(ticketActionDone(payload));
          }catch(e){
              console.log('saga update item  in task list:',e);
          }

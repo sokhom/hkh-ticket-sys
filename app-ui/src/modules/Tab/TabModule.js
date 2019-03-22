@@ -12,7 +12,9 @@ export const initialState = {
 export const openItemTab = createAction('OPEN_ITEM_TAB');
 export const removeItemTab = createAction('REMOVE_ITEM_TAB');
 export const onClickItemTab = createAction('ON_CLICK_ITEM_TAB');
-//export const loadItemFromLocal = createAction('LOAD_ITEM_FROM_LOCAL');
+
+//Ticket Item View
+export const ticketActionDone = createAction('TICKET_ACTION_DONE');
 
 
 export default handleActions({
@@ -34,7 +36,7 @@ export default handleActions({
             }
         },
         [onClickItemTab]: (state,action) =>{
-//             console.log('tab.activeKey onClickItemTab:',action.payload     );
+//          console.log('tab.activeKey onClickItemTab:',action.payload);
             const {activeKey} = action.payload
             let currentTab ={};
             state.data.forEach((pane, i) => {
@@ -45,7 +47,7 @@ export default handleActions({
             return {...state,currentTab:currentTab,activeKey:activeKey}
         },
         [removeItemTab]:(state,action) =>{
-             const {targetKey} = action.payload;
+            const {targetKey} = action.payload;
             let activeKey = state.activeKey;
             let lastIndex;
             state.data.forEach((pane, i) => {
@@ -65,5 +67,10 @@ export default handleActions({
                 }
             }
             return {...state,data:panes,activeKey:activeKey}
+        },
+        [ticketActionDone]: (state,action)=>{
+          const {item} = action.payload;
+          let d1 = state.data.map(d => d.id === item.id ?   {...d,itemDetail:{...item,desc: item.desc} }:d);
+          return {...state,data:state.data.map(d => d.id === item.id ? {...d,itemDetail:{...item,desc: item.desc} }:d)};
         }
     }, initialState);

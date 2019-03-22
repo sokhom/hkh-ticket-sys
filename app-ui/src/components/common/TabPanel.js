@@ -22,8 +22,9 @@ import {
   Cascader
 } from 'antd';
 import loadable from 'loadable-components';
-import  {getItem} from'components/List/ItemTaskCompo'
+//import  {getItem} from'components/List/ItemTaskCompo'
 //import TicketItemViewContainer from 'containers/Task/Ticket/TicketItemViewContainer';
+
 import NewTask from 'components/Task/NewTask'
 import styles from './TabPanel.less';
 const TabPane = Tabs.TabPane;
@@ -45,7 +46,6 @@ export default(store,children:Props ) => {
         }
 
         onChange = (activeKey) => {
-//            this.setState({ activeKey });
             this.props.onClickItemTab({activeKey});
         }
 
@@ -54,52 +54,14 @@ export default(store,children:Props ) => {
         }
 
         remove = (targetKey) => {
-//            let activeKey = this.state.activeKey;
-//            let lastIndex;
-//            this.state.panes.forEach((pane, i) => {
-//                if (pane.key === targetKey) {
-//                    lastIndex = i-1 ;
-//                }
-//            });
-//            const panes = this.state.panes.filter(pane => pane.key !== targetKey);
-//            if (lastIndex >= 0 && activeKey === targetKey ) {
-//                activeKey = panes[lastIndex].key;
-//            }else if(activeKey === targetKey){
-//                if(panes.length >0){
-//                     activeKey = panes[lastIndex+1].key;
-//                }else{
-//                    activeKey='newTab0';
-//                }
-//            }
-//            this.setState({ panes, activeKey });
             this.props.removeItemTab({targetKey});
         }
 
         onNewTabItem=(itemData,itemComponent)=>{
-         /*   const panes = this.state.panes;
-            const tabIndex = itemData.id;
-            const activeKey = `newTab${tabIndex}`;
-            let isPane = false;
-            this.state.panes.forEach((pane, i) => {
-                if (pane.id === tabIndex) {
-                    isPane = true;
-                }
-            });
-            if(isPane){
-                this.setState({ panes, activeKey });
-            }else{
-//              const  Item = getItem('ticketView');
-//              const TicketItemViewContainer = loadable(() => import('containers/Task/Ticket/TicketItemViewContainer'));
-//              panes.push({ id:itemData.id,title: itemData.title, content: <Item item={itemData}/>, key: activeKey });
-//                this.setState({ panes, activeKey });
-//                panes.push({ id:itemData.id,title: itemData.title, content: itemComponent, key: activeKey });
-                this.props.openItemTab({itemData:itemData,content:itemComponent});
-            }*/
             this.props.openItemTab({itemData:itemData,content:itemComponent});
         }
 
         render() {
-//            console.log('TabPanel props:',this.props);
             const   TaskListContainer = loadable(() => import('containers/list/TaskListContainer').then(bandle => bandle.default(store)));
             return (
                 <div>
@@ -120,7 +82,12 @@ export default(store,children:Props ) => {
                                 onEdit={this.onEdit}
                             >
                                 <TabPane tab='Task List' key='newTab0' closable={false}><TaskListContainer onNewTabItem={this.onNewTabItem}/></TabPane>
-                                {this.props.itemTabs.map(pane => <TabPane tab={pane.title} key={pane.key}>{pane.content}</TabPane>)}
+                                {this.props.itemTabs.map(pane =>{
+                                       const path = pane.content;
+                                       const ITemContainer =  loadable(() => import(`containers/Task/${path}`));
+                                      return  <TabPane tab={pane.title} key={pane.key}><ITemContainer item={pane.itemDetail} /></TabPane>
+                                    })
+                                }
                             </Tabs>
                         </Col>
                     </Row>

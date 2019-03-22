@@ -27,7 +27,8 @@ export default handleActions({
        task.id == action.id ? {...task,title:'Edit ticket ' + action.id}: task
     ),
     [updateItemInTaskList]:(state,action)=> {
-       return {data:state.data.map(task => task.id == action.payload.id ?  action.payload: task )};
+         const {item} = action.payload;
+       return {data:state.data.map(task => task.id == item.id ?  item: task )};
     },
     [addNewTaskItem]:(state,action)=> {
         const {data} = state ;

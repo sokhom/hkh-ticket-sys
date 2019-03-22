@@ -12,8 +12,7 @@ class Task extends React.PureComponent{
         super(props);
     }
 
-    openItemDetail = (itemDetailComp,initData) => {
-        initData(this.props.item);
+    openItemDetail = (itemDetailComp) => {
         return  this.props.onNewTabItem(this.props.item,itemDetailComp);
     }
 
@@ -22,7 +21,6 @@ class Task extends React.PureComponent{
         const item = this.props.item;
         const {type} = item;
         const  Item = loadable(() => import('containers/list/TicketItemContainer'));
-
         return(
          <div style={{width: '100%'}}>
             <h4> {this.props.item.title} </h4>
