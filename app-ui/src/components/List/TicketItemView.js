@@ -35,8 +35,6 @@ const {
 class TicketItemView extends React.Component{
 
     componentWillMount() {
-//        this.props.viewTicket(this.props.item)
-//        console.log('TicketItemView->componentWillMount ',this.props);
     }
 
     saveFormRef = (formRef) => {
@@ -48,10 +46,11 @@ class TicketItemView extends React.Component{
         switch (key){
             case 'done_ticket' :
                 const {showModal} = this.formRef1
-//                console.log('wrappedActionD?oneModal ' ,showModal);
                 showModal(this.props.item);
-                //this.props.ticketDone({...this.props.item,desc:'edit from view detail from '});
+             case 'assign_ticket_to' :
+                console.log('ticket item view: assign_ticket_to');
                 break;
+             default :
                 console.log('handle not match.');
                 break;
         }
@@ -69,7 +68,6 @@ class TicketItemView extends React.Component{
     }
 
     wrappedActionDoneModal = (formRef1) => {
-//            console.log('wrappedActionDoneModal11111 ' ,formRef1);
             this.formRef1 = formRef1;
     }
 

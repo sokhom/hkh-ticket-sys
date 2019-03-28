@@ -4,9 +4,9 @@ import TicketItemView from 'components/List/TicketItemView';
 
 
 const mapStateToProps = state =>{
-    console.log('mapStateToProps-TicketItemView',state);
+//    console.log('mapStateToProps-TicketItemView',state);
     return ({...state})
-} ;
+};
 
 const mapDispatchToProps = dispatch => ({
     ticketDone: (item) => {

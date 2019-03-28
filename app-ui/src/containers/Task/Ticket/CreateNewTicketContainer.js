@@ -4,20 +4,19 @@ import TicketForm from 'components/Task/Ticket/TicketForm'
 
 const actions = [
     {name:'Done',key:'done_ticket'},
-    {name:'Open Ticket Detail',key:'open_ticket'}
+    {name:'Open Ticket Detail',key:'open_ticket'},
+    {name:'Assign To',key:'assign_ticket_to'}
 ]
 
-
 const mapStateToProps = state =>{
-//    console.log('mapStateToProps-TicketItemContainer',state);
     return ({
         item:{
-            title: 'Ticket-00012',
+            title: 'Ticket-00069-604',
             desc: 'Add new ticket',
             dueDate: new Date()
         }
     })
-} ;
+};
 
 const mapDispatchToProps = dispatch => ({
   createNewTicket: (item) => {

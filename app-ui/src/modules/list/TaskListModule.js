@@ -5,7 +5,7 @@ import { createAction, handleActions } from 'redux-actions';
 export const initialState = {
   data: [
     {id:1,title:'Printer- Paper Jam',desc:'Fixing a Paper Jam - HP Deskjet 2050 All-in-One Printer | HP.',type:'ticket',actions:[{name:'Acknowledge',key:'acknowledge_ticket'},{name:'Done',key:'done_ticket'},{name:'Open Ticket Detail',key:'open_ticket'}]},
-    {id:2,title:'Internet slow',desc:'Why Is My Internet So Slow? What Can I Do to Fix It?.',type:'ticket',actions:[{name:'Done',key:'done_ticket'},{name:'Open Ticket Detail',key:'open_ticket'}]},
+    {id:2,title:'Internet slow',desc:'Why Is My Internet So Slow? What Can I Do to Fix It?.',type:'ticket',actions:[{name:'Done',key:'done_ticket'},{name:'Open Ticket Detail',key:'open_ticket'},{name:'Assign To',key:'assign_ticket_to'},]},
 //    {id:3,title:'Australian walks',desc:'Australian walks 100km after outback crash.',type:'ticket'},
 //    {id:4,title:'Man charged',desc:'Man charged over missing wedding girl.',type:'ticket'},
 //    {id:5,title:'Los Angeles battles',desc:'Los Angeles battles huge wildfires.',type:'ticket1'}

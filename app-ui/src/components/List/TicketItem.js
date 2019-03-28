@@ -2,49 +2,24 @@ import Item from './Item';
 import { List,Menu, Dropdown, Button, Icon, message ,Modal,Form,Input} from 'antd';
 import {RequireMessageFormModal} from './RequireMessageFormModal';
 import TicketItemViewContainer from 'containers/Task/Ticket/TicketItemViewContainer';
+import TicketActionDoneModal from 'components/Task/Ticket/TicketActionDoneModal'
 
 export default class TicketItem extends Item{
 
-    state = { visible: false }
 
-    showModal = (item) => {
-        this.setState({
-        visible: true,
-        });
-    }
-
-    handleCreate = (e) => {
-        const form = this.formRef.props.form;
-        form.validateFields((err, values) => {
-            if (err) {
-                return;
-            }
-//          console.log('Received values of form: ', values);
-            this.props.ticketDone({item:{...this.props.item,desc:values.desc}});
-            form.resetFields();
-            this.setState({ visible: false });
-        });
-    }
-
-    handleCancel = (e) => {
-        this.setState({
-          visible: false,
-        });
-    }
-
-    saveFormRef = (formRef) => {
-        this.formRef = formRef;
-    }
 
     handleDropDownMenu = (e) => {
         const {key} = e;
         switch (key){
             case 'done_ticket' :
-                this.showModal(this.props.item);
+                const {showModal} = this.formRef;
+                showModal(this.props.item);
                 break;
             case 'open_ticket' :
-//              this.props.viewTicket(this.props.item);
                 this.props.openItemDetail('Ticket/TicketItemViewContainer');
+                break;
+            case 'assign_ticket_to' :
+                console.log('assign_ticket_to');
                 break;
             default :
                 console.log('handle not match.');
@@ -55,7 +30,6 @@ export default class TicketItem extends Item{
     //@@override
     menuDrop(){
         var { type,actions } = this.props.item;
-//        console.log('TicketItem props:',this.props);
         return (
           <Menu onClick={this.handleDropDownMenu}>
             {actions.map(act =>
@@ -65,20 +39,15 @@ export default class TicketItem extends Item{
         );
     }
 
-
+    wrappedActionDoneModal = (formRef) => {
+        this.formRef = formRef;
+    }
     //@@override
     renderUI(){
         return(
             <div>
-                 <p> {this.props.item.desc}</p>
-                 <RequireMessageFormModal
-                    title={this.props.item.title}
-                    wrappedComponentRef={this.saveFormRef}
-                    visible={this.state.visible}
-                    onCancel={this.handleCancel}
-                    onCreate={this.handleCreate}
-                    okText ='Done'
-                 />
+                <p> {this.props.item.desc}</p>
+                <TicketActionDoneModal item={this.props.item} wrappedComponentRef={this.wrappedActionDoneModal} ticketActionDone={this.props.ticketDone} />
             </div>
         );
     }
