@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import BasicModal from 'components/common/BasicModal';
-import TicketActionDoneForm from 'components/Task/Ticket/TicketActionDoneForm'
+import TicketActionAssignToForm from 'components/Task/Ticket/Actions/TicketActionAssignToForm'
 
 
-export default class TicketActionDoneModal extends React.Component{
+export default class TicketActionAssignToModal extends React.Component{
     state = { visible: false }
 
     showModal1 = (item) => {
@@ -49,9 +49,9 @@ export default class TicketActionDoneModal extends React.Component{
                 visible={this.state.visible}
                 handleCancel={this.handleCancel}
                 handleOk={this.handleCreate}
-                okText ='Done'
+                okText ='Ok'
             >
-                <TicketActionDoneForm  wrappedComponentRef={this.saveFormRef}/>
+                <TicketActionAssignToForm  wrappedComponentRef={this.saveFormRef}/>
             </BasicModal>
         );
     }

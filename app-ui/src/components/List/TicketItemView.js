@@ -21,7 +21,7 @@ import {
   Dropdown
 } from 'antd';
 import TicketForm from 'components/Task/Ticket/TicketForm'
-import TicketActionDoneModal from 'components/Task/Ticket/TicketActionDoneModal'
+import TicketActionDoneModal from 'components/Task/Ticket/Actions/TicketActionDoneModal'
 import styles from './BaseView.less';
 
 const FormItem = Form.Item;

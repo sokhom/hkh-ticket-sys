@@ -2,7 +2,8 @@ import Item from './Item';
 import { List,Menu, Dropdown, Button, Icon, message ,Modal,Form,Input} from 'antd';
 import {RequireMessageFormModal} from './RequireMessageFormModal';
 import TicketItemViewContainer from 'containers/Task/Ticket/TicketItemViewContainer';
-import TicketActionDoneModal from 'components/Task/Ticket/TicketActionDoneModal'
+import TicketActionDoneModal from 'components/Task/Ticket/Actions/TicketActionDoneModal';
+import TicketActionAssignToModal from 'components/Task/Ticket/Actions/TicketActionAssignToModal'
 
 export default class TicketItem extends Item{
 
@@ -19,7 +20,8 @@ export default class TicketItem extends Item{
                 this.props.openItemDetail('Ticket/TicketItemViewContainer');
                 break;
             case 'assign_ticket_to' :
-                console.log('assign_ticket_to');
+//                var {showModal} = this.formAssignToRef;
+                this.formAssignToRef.showModal(this.props.item);
                 break;
             default :
                 console.log('handle not match.');
@@ -42,12 +44,17 @@ export default class TicketItem extends Item{
     wrappedActionDoneModal = (formRef) => {
         this.formRef = formRef;
     }
+
+    wrappedActionAssignToModal = (formAssignToRef) => {
+            this.formAssignToRef = formAssignToRef;
+    }
     //@@override
     renderUI(){
         return(
             <div>
                 <p> {this.props.item.desc}</p>
                 <TicketActionDoneModal item={this.props.item} wrappedComponentRef={this.wrappedActionDoneModal} ticketActionDone={this.props.ticketDone} />
+                <TicketActionAssignToModal item={this.props.item} wrappedComponentRef={this.wrappedActionAssignToModal} ticketActionDone={this.props.ticketDone} />
             </div>
         );
     }

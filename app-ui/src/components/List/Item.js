@@ -33,9 +33,11 @@ export default class Item extends React.PureComponent{
             <div>
                 {this.renderUI()}
                 <div style={{ marginLeft: 8,float:'right' }}>
-                    <Dropdown.Button onClick={this.handleButtonClick} overlay={this.menuDrop()}>
-                        Acknowledge
-                    </Dropdown.Button>
+                    <Dropdown  overlay={this.menuDrop()}>
+                        <Button type="primary" style={{ marginLeft: 8,float:'right' }}>
+                            Actions <Icon type="down" />
+                        </Button>
+                    </Dropdown>
                 </div>
             </div>
         );
