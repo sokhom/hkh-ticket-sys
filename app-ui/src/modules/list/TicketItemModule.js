@@ -2,9 +2,12 @@
 import { combineReducers } from 'redux';
 import { createAction, handleActions } from 'redux-actions';
 import { formReducer, modelReducer } from 'react-redux-form';
+
 export const initialState = {
-        isPadding: false
+        isPadding: false,
+        assignToAccts: [{name:'Hay Sokhom'},{name: 'Ngoun Phanny'},{name: 'Group-A'}]
 };
+
 export const modelPath: string = 'tasks.ticketItem';
 export const ticketDone = createAction('TICKET_DONE');
 //export const ticketDone1 = createAction('TICKET_DONE1');

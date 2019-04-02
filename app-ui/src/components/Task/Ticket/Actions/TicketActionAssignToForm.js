@@ -35,9 +35,10 @@ class TicketActionAssignToForm extends React.Component {
                 <Select
                     mode="multiple"
                     placeholder="Inserted are removed"
-                    value={selectedItems}
+                    defaultValue={['Group-A']}
                     onChange={this.handleChange}
                     style={{ width: '100%' }}
+
                 >
                     {filteredOptions.map(item => (
                         <Select.Option key={item} value={item}>

@@ -1,6 +1,5 @@
-import Item from './Item';
+import Item from 'components/List/Item';
 import { List,Menu, Dropdown, Button, Icon, message ,Modal,Form,Input} from 'antd';
-import {RequireMessageFormModal} from './RequireMessageFormModal';
 import TicketItemViewContainer from 'containers/Task/Ticket/TicketItemViewContainer';
 import TicketActionDoneModal from 'components/Task/Ticket/Actions/TicketActionDoneModal';
 import TicketActionAssignToModal from 'components/Task/Ticket/Actions/TicketActionAssignToModal'

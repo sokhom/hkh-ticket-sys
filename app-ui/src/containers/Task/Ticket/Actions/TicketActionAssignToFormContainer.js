@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import {ticketDone } from 'modules/list/TicketItemModule';
-import TicketItemView from 'components/Task/Ticket/TicketItemView';
+import TicketActionAssignToForm from 'components/Task/Ticket/Actions/TicketActionAssignToForm';
 
 
 const mapStateToProps = state =>{
-//    console.log('mapStateToProps-TicketItemView',state);
+    console.log('mapStateToProps-TicketActionAssignToFormContainer',state);
     return ({...state})
 };
 
@@ -14,4 +14,4 @@ const mapDispatchToProps = dispatch => ({
     }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(TicketItemView);
+export default connect(mapStateToProps, mapDispatchToProps)(TicketActionAssignToForm);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import BasicModal from 'components/common/BasicModal';
-import TicketActionAssignToForm from 'components/Task/Ticket/Actions/TicketActionAssignToForm'
+import TicketActionAssignToFormContainer from 'containers/Task/Ticket/Actions/TicketActionAssignToFormContainer'
 
 
 export default class TicketActionAssignToModal extends React.Component{
@@ -51,7 +51,7 @@ export default class TicketActionAssignToModal extends React.Component{
                 handleOk={this.handleCreate}
                 okText ='Ok'
             >
-                <TicketActionAssignToForm  wrappedComponentRef={this.saveFormRef}/>
+                <TicketActionAssignToFormContainer  wrappedComponentRef={this.saveFormRef}/>
             </BasicModal>
         );
     }

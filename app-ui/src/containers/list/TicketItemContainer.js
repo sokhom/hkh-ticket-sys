@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { ticketDone,viewTicket } from 'modules/list/TicketItemModule';
 //import { updateTaskItem } from 'modules/list/TaskListModule';
-import TicketItem from 'components/List/TicketItem'
+import TicketItem from 'components/Task/Ticket/TicketItem'
 
 const mapStateToProps = state =>{
 //    console.log('mapStateToProps-TicketItemContainer',state);
